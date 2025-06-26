@@ -1,0 +1,10 @@
+.contenedorPagina {
+  padding: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contenedorPagina h1 {
+  font-family: var(--font-titulos);
+}

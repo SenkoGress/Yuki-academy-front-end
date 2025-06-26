@@ -1,0 +1,30 @@
+/* src/index.css */
+
+/* 1. Definimos los colores de tu marca como variables globales */
+:root {
+  --primary: #673F97;
+  --primary-high: #33115A;
+  --secondary: #1568B2;
+  --tertiary: #FF0E99;
+  --neutral-100: #F5F5F5;
+  --neutral-600: #4A4A4A;
+  --white: #FFFFFF;
+  --black: #000000;
+  
+  /* Tipografías */
+  --font-titulos: 'IBM Plex Mono', monospace;
+  --font-textos: 'Roboto Flex', sans-serif;
+}
+
+/* 2. Reseteo básico y aplicamos la fuente de textos por defecto */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-textos); /* Aplicamos Roboto Flex a todo el cuerpo */
+  background-color: var(--white); /* Fondo blanco por defecto */
+  color: var(--black); /* Color de texto negro por defecto */
+}

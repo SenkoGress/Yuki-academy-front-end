@@ -1,0 +1,60 @@
+.paginaContenedor {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+.cabecera {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.cabecera h1 {
+    font-family: var(--font-titulos);
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.cabecera p {
+    font-size: 1.1rem;
+    color: var(--neutral-600);
+    margin-top: 8px;
+}
+
+.cuadriculaCursos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.sinCursos {
+    text-align: center;
+    padding: 80px 24px;
+    background-color: var(--neutral-100);
+    border-radius: 8px;
+}
+
+.sinCursos h2 {
+    font-family: var(--font-titulos);
+    font-size: 2rem;
+}
+
+.sinCursos p {
+    margin: 16px 0 32px 0;
+    font-size: 1.1rem;
+}
+
+.botonExplorar {
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: bold;
+    background-color: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.botonExplorar:hover {
+    background-color: var(--primary-high);
+}

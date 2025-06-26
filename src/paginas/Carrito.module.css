@@ -1,0 +1,61 @@
+.pagina {
+  max-width: 1200px;
+  margin: 48px auto;
+  padding: 24px;
+  font-family: var(--font-textos);
+}
+
+.pagina h1 {
+  font-family: var(--font-titulos);
+  margin-bottom: 32px;
+}
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.listaItems {
+  flex: 2;
+  min-width: 300px;
+}
+
+.listaItems h4 {
+  border-bottom: 1px solid #d1d7dc;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.resumen {
+  flex: 1;
+  min-width: 280px;
+  border: 1px solid #d1d7dc;
+  padding: 24px;
+  background-color: #f7f9fa;
+}
+
+.precioTotal {
+  font-size: 2.2rem;
+  font-family: var(--font-titulos);
+  margin: 8px 0 16px 0;
+}
+
+.botonPagar {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.info {
+  font-size: 0.8rem;
+  color: #6a6f73;
+  text-align: center;
+  margin-top: 16px;
+}

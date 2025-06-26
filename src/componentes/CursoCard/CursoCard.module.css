@@ -1,0 +1,65 @@
+.card {
+  border: 1px solid #d1d7dc;
+  background-color: white;
+  max-width: 280px;
+  cursor: pointer;
+  text-align: left;
+}
+.card:hover .titulo {
+  color: #5624d0;
+}
+.imagenCurso {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #d1d7dc;
+}
+.info {
+  padding: 12px;
+}
+.titulo {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  color: #1c1d1f;
+  transition: color 0.2s ease;
+}
+.instructor {
+  font-size: 0.8rem;
+  color: #6a6f73;
+  margin: 0 0 8px 0;
+}
+.rating {
+  margin-bottom: 8px;
+}
+.puntuacion {
+  font-weight: bold;
+  color: #b4690e;
+  margin-right: 4px;
+}
+.precio {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1c1d1f;
+  margin: 0;
+}
+.enlaceCard {
+  text-decoration: none;
+}
+
+/* Añade esto al final de CursoCard.module.css */
+.botonAgregar {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.botonAgregar:hover {
+  background-color: var(--primary-high);
+}

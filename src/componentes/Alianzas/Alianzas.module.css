@@ -1,0 +1,51 @@
+.seccionAlianzas {
+  padding: 64px 24px;
+  background-color: white;
+  font-family: sans-serif;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto 16px auto;
+  position: relative;
+  width: fit-content; 
+  color: #1c1d1f;
+}
+
+
+.titulo::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 4px;
+  background-color: #673F97; 
+  margin: 8px auto 0 auto;
+}
+
+.contenedorMarquee {
+  margin-top: 48px;
+}
+
+.contenedorLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 50px; 
+}
+
+.logoImagen {
+
+  height: 60px; 
+  width: auto; 
+  filter: grayscale(0%); 
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.logoImagen:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}

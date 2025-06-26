@@ -1,0 +1,56 @@
+.card {
+  display: flex;
+  gap: 20px;
+  border: 1px solid #d1d7dc;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--white);
+  align-items: center;
+}
+
+.imagen {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.titulo {
+  font-family: var(--font-titulos);
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+  color: var(--black);
+}
+
+.estadisticas {
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+  margin: 0 0 16px 0;
+}
+
+.acciones {
+  margin-top: auto;
+}
+
+.botonEditar {
+  background: none;
+  border: 2px solid var(--black);
+  color: var(--black);
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.botonEditar:hover {
+  background-color: var(--black);
+  color: var(--white);
+}

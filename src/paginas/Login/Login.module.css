@@ -1,0 +1,92 @@
+.paginaLogin {
+  display: flex;
+  justify-content: center;
+  padding: 64px 24px;
+  background-color: #f7f9fa;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.logo {
+  height: 40px;
+  margin-bottom: 24px;
+}
+
+.formContainer h2 {
+  font-family: var(--font-titulos);
+  margin-bottom: 32px;
+}
+
+.campo {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #d1d7dc;
+  border-radius: 4px;
+}
+
+.botonLogin {
+  width: 100%;
+  padding: 16px;
+  margin-top: 8px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.linksFooter {
+  margin-top: 32px;
+  font-size: 0.9rem;
+}
+
+.linksFooter a {
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.linksFooter a:hover {
+  text-decoration: underline;
+}
+
+.linksFooter span {
+  margin: 0 8px;
+  color: #6a6f73;
+}
+
+.errorMessage {
+  color: #d32f2f; /* Un rojo para errores */
+  background-color: #ffebee; /* Un fondo claro para errores */
+  border: 1px solid #ef9a9a;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Estilos adicionales para los campos cuando están deshabilitados (opcional) */
+.campo input:disabled,
+.botonLogin:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

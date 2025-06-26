@@ -1,0 +1,116 @@
+/* src/paginas/CuentaUsuario/CuentaUsuario.module.css */
+.contenedorCuenta {
+    padding: 40px 24px;
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.contenedorCuenta h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: var(--font-titulos);
+}
+
+.seccionesCuenta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columnas o más, adaptable */
+    gap: 30px;
+    text-align: left;
+}
+
+.seccion {
+    background-color: #f7f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #e0e2e5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.seccion h3 {
+    color: var(--primary-high);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-family: var(--font-titulos);
+}
+
+.seccion p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.botonGestion {
+    display: block; /* Cada botón en su propia línea */
+    width: 100%;
+    padding: 10px 15px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 10px; /* Espacio entre botones */
+    transition: background-color 0.3s ease;
+}
+
+.botonGestion:hover {
+    background-color: var(--primary-high);
+}
+
+.botonGestion:last-child {
+    margin-bottom: 0; /* No hay margen inferior para el último botón en una sección */
+}
+
+.botonPeligro {
+    background-color: #dc3545; /* Color rojo para acciones peligrosas */
+}
+
+.botonPeligro:hover {
+    background-color: #c82333;
+}
+
+/* Estilos para el mensaje de acceso denegado */
+.contenedorMensaje {
+    padding: 40px 24px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffe0b2; /* Un color suave para el aviso */
+    border: 1px solid #ffcc80;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    color: #e65100; /* Texto naranja */
+}
+
+.contenedorMensaje h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #bf360c;
+}
+
+.contenedorMensaje p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.contenedorMensaje .botonLogin {
+    background-color: #ff9800; /* Naranja brillante */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.contenedorMensaje .botonLogin:hover {
+    background-color: #fb8c00;
+}

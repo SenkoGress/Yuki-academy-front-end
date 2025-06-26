@@ -1,0 +1,82 @@
+/* src/paginas/PerfilUsuario/PerfilUsuario.module.css */
+.contenedorPerfil {
+    padding: 40px 24px;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.contenedorPerfil h1 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: var(--font-titulos);
+}
+
+.datosPerfil {
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.datosPerfil strong {
+    color: #333;
+}
+
+.botonEditar {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.botonEditar:hover {
+    background-color: var(--primary-high);
+}
+
+/* Estilos para el mensaje de acceso denegado */
+.contenedorMensaje {
+    padding: 40px 24px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffe0b2; /* Un color suave para el aviso */
+    border: 1px solid #ffcc80;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    color: #e65100; /* Texto naranja */
+}
+
+.contenedorMensaje h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #bf360c;
+}
+
+.contenedorMensaje p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.contenedorMensaje .botonLogin {
+    background-color: #ff9800; /* Naranja brillante */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.contenedorMensaje .botonLogin:hover {
+    background-color: #fb8c00;
+}

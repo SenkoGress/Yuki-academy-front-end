@@ -1,0 +1,8 @@
+.item { display: flex; gap: 16px; border-bottom: 1px solid #d1d7dc; padding: 16px 0; }
+.imagen { width: 100px; height: 100px; object-fit: cover; }
+.detalles { flex-grow: 1; }
+.titulo { margin: 0 0 8px 0; font-size: 1rem; }
+.instructor { margin: 0; font-size: 0.9rem; color: #6a6f73; }
+.acciones { text-align: right; }
+.precio { font-weight: bold; margin: 0 0 8px 0; }
+.botonEliminar { color: var(--primary); background: none; border: none; cursor: pointer; text-decoration: underline; }

@@ -1,0 +1,122 @@
+/* Definición de variables CSS */
+:root {
+  --primary: #6200EE; /* Color principal */
+  --primary-dark: #3700B3; /* Color principal más oscuro para hover */
+  --white: #ffffff; /* Color blanco */
+  --text-color: #333; /* Color de texto oscuro */
+  --text-color-light: #555; /* Color de texto ligeramente más claro */
+  --font-titulos: 'Roboto', sans-serif; /* Fuente para títulos (ejemplo) */
+}
+
+.paginaRegistro {
+  display: flex;
+  justify-content: center;
+  padding: 64px 24px;
+  background-color: #f7f9fa;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--white); /* Usando la variable --white */
+}
+
+.logo {
+  height: 40px;
+  margin-bottom: 24px;
+}
+
+.formContainer h2 {
+  font-family: var(--font-titulos); /* Usando la variable --font-titulos */
+  margin-bottom: 32px;
+  color: var(--text-color); /* Usando la variable --text-color */
+}
+
+.campo {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--text-color-light); /* Usando la variable --text-color-light */
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #d1d7dc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* CAMBIO CLAVE: Renombrar a 'botonRegistro' con la tilde y aplicar la variable */
+.botonRegistro {
+  width: 100%;
+  padding: 16px;
+  margin-top: 8px;
+  background-color: var(--primary); /* Usando la variable --primary */
+  color: var(--white);
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.botonRegistro:hover:not(:disabled) {
+  background-color: var(--primary-dark); /* Usando la variable --primary-dark */
+}
+
+.linksFooter {
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
+
+.linksFooter a {
+  color: var(--primary);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.linksFooter a:hover {
+  text-decoration: underline;
+}
+
+.errorMessage {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.successMessage {
+  color: #2e7d32;
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Estilos adicionales para los campos cuando están deshabilitados*/
+.campo input:disabled,
+.botonRegistro:disabled { /* CAMBIO CLAVE: Renombrar a 'botonRegistro' */
+  opacity: 0.7;
+  cursor: not-allowed;
+}

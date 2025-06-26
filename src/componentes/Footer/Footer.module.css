@@ -1,0 +1,209 @@
+.footer {
+  background-color: var(--primary-high);
+  color: var(--white);
+  padding: 48px 24px 24px 24px;
+  /* Añadido para centrar el contenido principal y la barra inferior */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente el contenido */
+}
+
+.contenidoPrincipal {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1340px;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible hasta el max */
+  margin: 0 auto 48px auto;
+  gap: 32px;
+  /* Ajustes para centrar las columnas si hay espacio */
+  justify-content: center; /* Centra las columnas si no hay suficiente para space-between */
+}
+
+.columnas {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  /* Centrar las columnas dentro de su contenedor si no ocupan todo el ancho */
+  justify-content: center;
+}
+
+.columnaLinks {
+  flex: 1 1 auto; /* Permite que las columnas crezcan y se encojan */
+  min-width: 150px; /* Ancho mínimo para evitar que se aplasten demasiado */
+}
+
+.columnaLinks h4 {
+  margin: 0 0 16px 0;
+  font-size: 1.1rem;
+  font-family: var(--font-titulos);
+}
+
+.columnaLinks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.columnaLinks li {
+  margin-bottom: 12px;
+}
+
+.columnaLinks a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.columnaLinks a:hover {
+  text-decoration: underline;
+}
+
+/* --- ESTILOS PARA LA NUEVA SECCIÓN DE CONTACTO --- */
+.listaContacto {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.itemContacto {
+  display: flex; /* Para alinear el icono y el texto */
+  align-items: center;
+  gap: 8px; /* Espacio entre el icono y el texto */
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: var(--white);
+}
+
+.itemContacto svg {
+  font-size: 1rem; /* Tamaño del icono */
+  color: var(--white);
+}
+
+.itemContacto a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.itemContacto a:hover {
+  text-decoration: underline;
+}
+/* --- FIN ESTILOS DE CONTACTO --- */
+
+.selectorIdioma {
+  /* Si necesitas que el selector de idioma se alinee a la derecha cuando las columnas estén centradas */
+  margin-left: auto; /* Empuja el selector a la derecha si hay espacio */
+}
+
+.selectorIdioma button {
+  background: none;
+  border: 1px solid var(--white);
+  color: var(--white);
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px; /* Añadido borde redondeado */
+}
+
+.barraInferior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1340px;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible hasta el max */
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--neutral-600);
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  gap: 16px; /* Espacio entre los elementos al envolver */
+  justify-content: center; /* Centra los elementos horizontalmente en pantallas pequeñas */
+}
+
+/* --- ESTILOS PARA EL LOGO Y TEXTO "Digital Technologies" --- */
+.logoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea el logo y texto a la izquierda dentro de su wrapper */
+}
+
+.logoFooter {
+  height: 34px;
+  margin-bottom: 4px; /* Pequeño espacio entre el logo y el texto */
+}
+
+.logoTexto {
+  font-size: 0.7rem; /* Tamaño más pequeño para el texto */
+  color: #d4d4d4; /* Color similar al copyright */
+  margin: 0; /* Elimina márgenes por defecto del párrafo */
+  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+}
+/* --- FIN ESTILOS LOGO --- */
+
+.copyright {
+  font-size: 0.8rem;
+  color: #d4d4d4;
+  text-align: center; /* Asegura que el copyright se centre si está solo */
+  flex-grow: 1; /* Permite que el copyright ocupe el espacio restante en el medio */
+}
+
+.redesSociales {
+  display: flex;
+  gap: 16px;
+}
+
+.redesSociales a {
+  color: var(--white);
+  font-size: 1.5rem;
+}
+
+
+/* --- Media Queries para Responsividad (Opcional, pero recomendado) --- */
+@media (max-width: 768px) {
+  .contenidoPrincipal {
+    flex-direction: column; /* Apila las columnas y el selector de idioma en pantallas pequeñas */
+    align-items: center; /* Centra los elementos apilados */
+    gap: 24px;
+  }
+
+  .columnas {
+    flex-direction: column; /* Apila las columnas de links */
+    align-items: center;
+    gap: 24px;
+  }
+
+  .columnaLinks {
+    text-align: center; /* Centra el texto de las columnas */
+    min-width: unset; /* Elimina el ancho mínimo para mejor adaptación */
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+  .selectorIdioma {
+    margin-left: 0; /* Elimina el margen automático */
+    width: 100%;
+    text-align: center;
+  }
+
+  .selectorIdioma button {
+    width: 100%; /* El botón ocupa todo el ancho */
+    justify-content: center; /* Centra el contenido del botón */
+  }
+
+  .barraInferior {
+    flex-direction: column; /* Apila los elementos de la barra inferior */
+    gap: 16px;
+  }
+
+  .logoWrapper {
+    align-items: center; /* Centra el logo y texto cuando se apila */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 32px 16px 16px 16px;
+  }
+}

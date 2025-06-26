@@ -1,0 +1,140 @@
+.pagina {
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.hero {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 48px;
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  font-family: var(--font-titulos);
+  font-size: 2.5rem;
+}
+
+.hero .descripcion {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 16px 0;
+}
+
+.contenidoPrincipal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.columnaIzquierda {
+  flex: 2;
+  min-width: 300px;
+}
+
+.cajaTemario {
+  border: 1px solid #d1d7dc;
+  padding: 24px;
+}
+
+.cajaTemario h2 {
+  font-family: var(--font-titulos);
+  margin: 0 0 16px 0;
+}
+
+.cajaTemario ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cajaTemario li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.iconoCheck {
+  color: var(--primary);
+}
+
+.columnaDerecha {
+  flex: 1;
+  min-width: 320px;
+}
+
+.cajaCompra {
+  border: 1px solid #d1d7dc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--white);
+}
+
+.imagenCurso {
+  width: 100%;
+}
+
+.precio {
+  font-family: var(--font-titulos);
+  font-size: 2rem;
+  padding: 24px;
+  margin: 0;
+}
+
+.botonComprar {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 0 24px 24px 24px;
+  padding: 16px;
+  background-color: var(--primary);
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.garantia {
+  text-align: center;
+  font-size: 0.8rem;
+  padding-bottom: 24px;
+}
+/* ... (pega esto al final de DetalleCurso.module.css) ... */
+
+.yaCompradoContenedor {
+  padding: 24px;
+  text-align: center;
+}
+
+.yaCompradoContenedor p {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #1c1d1f;
+  margin-bottom: 16px;
+}
+
+.botonIrCurso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--secondary); /* Usamos un color diferente */
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 4px; /* Opcional: redondeamos los bordes */
+  transition: background-color 0.2s ease;
+}
+
+.botonIrCurso:hover {
+  background-color: #0d47a1; /* Un azul más oscuro */
+}
+
+.botonIrCurso svg {
+  font-size: 1.2rem;
+}

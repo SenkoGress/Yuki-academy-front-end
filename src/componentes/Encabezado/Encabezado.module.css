@@ -1,0 +1,341 @@
+/* src/components/Encabezado/Encabezado.module.css */
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  padding: 10px 24px;
+  background-color: white;
+  border-bottom: 1px solid #d1d7dc;
+  font-family: sans-serif;
+  position: relative; /* Añadido para posicionar los menús desplegables */
+  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+}
+
+.grupoIzquierdo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  position: relative; /* Para posicionar el menú hamburguesa */
+}
+
+.logoImagen {
+  height: 25px;
+  width: auto;
+  display: block;
+}
+
+.formulario {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 700px;
+  margin: 0 24px;
+}
+
+.contenedorInput {
+  position: relative;
+  width: 100%;
+}
+
+.icono {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6a6f73;
+  font-size: 1.1rem;
+}
+
+.entrada {
+  width: 100%;
+  padding: 12px 16px 12px 48px;
+  border: 1px solid #1c1d1f;
+  border-radius: 999px;
+  background-color: #f7f9fa;
+  font-size: 14px;
+}
+
+.grupoDerecho {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.enlaceNavegacion {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #1c1d1f;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.enlaceNavegacion:hover {
+  background-color: #f7f9fa;
+}
+
+.botonIcono {
+  background: none;
+  border: 1px solid transparent;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+  color: #1c1d1f;
+}
+
+.botonIcono:hover {
+  background-color: #f7f9fa;
+}
+
+.imagenIcono {
+  height: 22px;
+  width: auto;
+}
+
+.botonLogin {
+  padding: 9px 16px;
+  background-color: white;
+  color: #1c1d1f;
+  border: 2px solid #1c1d1f;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+.botonLogin:hover {
+  background-color: #f7f9fa;
+}
+
+.botonRegistro {
+  padding: 9px 16px;
+  background-color: #5624d0;
+  color: white;
+  border: 2px solid #5624d0;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 4px;
+}
+
+/* Hacemos que el botón del carrito sea relativo para posicionar el contador encima */
+.botonIconoCarrito {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: var(--black);
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.botonIconoCarrito:hover {
+  background-color: var(--neutral-100);
+}
+
+.contadorCarrito {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--tertiary);
+  color: var(--white);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  transform: translate(40%, -40%);
+  border: 2px solid var(--white);
+}
+
+/* --- ESTILOS PARA USUARIOS LOGEADOS --- */
+
+/* Botón de Cuenta */
+.botonCuenta {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #1c1d1f;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  background-color: #f0f2f5; /* Un fondo ligeramente diferente para destacar */
+  border: 1px solid #d1d7dc;
+}
+
+.botonCuenta:hover {
+  background-color: #e0e2e5;
+}
+
+/* Contenedor del Perfil (para posicionar el menú desplegable) */
+.contenedorPerfil {
+  position: relative;
+  display: inline-block;
+}
+
+/* Botón de Perfil */
+.botonPerfil {
+  background-color: var(--primary); /* Color de acento para el perfil */
+  color: var(--white);
+  padding: 9px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.botonPerfil:hover {
+  background-color: #4a1f9a; /* Un tono más oscuro en hover */
+}
+
+/* Menú Desplegable de Perfil */
+.menuDesplegablePerfil {
+  position: absolute;
+  top: 100%; /* Justo debajo del botón de perfil */
+  right: 0; /* Alineado a la derecha del botón */
+  background-color: white;
+  border: 1px solid #d1d7dc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  z-index: 1001; /* Asegura que esté por encima del header */
+}
+
+.perfilEmail {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  color: #6a6f73;
+  margin: 0;
+  border-bottom: 1px solid #f0f2f5; /* Separador */
+  margin-bottom: 8px;
+}
+
+.perfilMenuItem,
+.perfilMenuItemBoton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #1c1d1f;
+  font-size: 14px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.perfilMenuItem:hover,
+.perfilMenuItemBoton:hover {
+  background-color: #f7f9fa;
+}
+
+/* Botón Menú Hamburguesa */
+.botonMenuHamburguesa {
+  display: none; /* Por defecto oculto en desktop, se muestra en responsive */
+}
+
+/* Menú Desplegable Hamburguesa */
+.menuDesplegableHamburguesa {
+  position: absolute;
+  top: 100%; /* Justo debajo del botón */
+  left: 0; /* Alineado a la izquierda del botón */
+  background-color: white;
+  border: 1px solid #d1d7dc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  z-index: 1001;
+}
+
+.menuItem {
+  display: block; /* Para que ocupen todo el ancho y se apilen */
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #1c1d1f;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.menuItem:hover {
+  background-color: #f7f9fa;
+}
+
+/* --- Responsive para dispositivos móviles --- */
+@media (max-width: 768px) {
+  .encabezado {
+    padding: 10px 16px; /* Menos padding en móviles */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: space-between; /* Ajusta el justify */
+  }
+
+  .grupoIzquierdo {
+    order: 1; /* Orden de los elementos en la fila */
+    gap: 8px;
+  }
+
+  .formulario {
+    order: 3; /* Coloca el formulario en una nueva línea */
+    flex-basis: 100%; /* Ocupa todo el ancho */
+    margin: 10px 0; /* Espacio superior e inferior */
+  }
+
+  .grupoDerecho {
+    order: 2; /* Orden de los elementos en la fila */
+    gap: 4px;
+  }
+
+  .enlaceNavegacion,
+  .botonLogin,
+  .botonRegistro,
+  .botonCuenta {
+    display: none; /* Oculta estos enlaces/botones en móviles */
+  }
+
+  /* Muestra el botón de menú hamburguesa en móviles */
+  .botonMenuHamburguesa {
+    display: flex; /* Ahora visible */
+    margin-right: 8px; /* Espacio a la derecha del botón de hamburguesa */
+  }
+
+  /* Ajuste para el posicionamiento de los menús desplegables en móviles */
+  .menuDesplegableHamburguesa,
+  .menuDesplegablePerfil {
+    position: fixed; /* Posicionamiento fijo para que no se corten */
+    top: 60px; /* Debajo del encabezado */
+    left: 10px; /* Desde el borde izquierdo */
+    right: 10px; /* Hasta el borde derecho */
+    min-width: unset; /* Elimina ancho mínimo */
+    width: auto; /* Ancho automático */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 10000; /* Alto z-index para asegurar que esté encima */
+  }
+}

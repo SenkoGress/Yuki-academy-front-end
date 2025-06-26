@@ -1,0 +1,33 @@
+.seccionPrecios {
+  padding: 64px 24px;
+  background-color: white;
+  font-family: sans-serif;
+}
+
+.cabecera {
+  max-width: 800px;
+  margin: 0 auto 48px auto;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: #1c1d1f;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+
+.contenedorPlanes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1340px;
+  margin: 0 auto;
+  align-items: start; 
+}

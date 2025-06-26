@@ -1,0 +1,19 @@
+.contenedor {
+  padding: 40px 0;
+}
+
+.cabecera {
+  margin-bottom: 24px;
+}
+
+.tituloPrincipal {
+  font-family: var(--font-titulos);
+  font-size: 2rem;
+  color: var(--black);
+}
+
+.listaCursos {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
