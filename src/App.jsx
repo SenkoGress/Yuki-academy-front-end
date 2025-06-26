@@ -33,7 +33,7 @@ import './App.css';
 // Componente interno para organizar el layout
 const AppLayout = () => {
     // Obtenemos el estado de autenticación desde el contexto
-    const { isLoggedIn, user } = useAuth(); 
+    const { isLoggedIn, _user } = useAuth();
     
     return (
         <div className="layout-container">
