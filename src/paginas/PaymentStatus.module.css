@@ -1,0 +1,67 @@
+/* src/paginas/PaymentStatus.module.css */
+
+.contenedor {
+    text-align: center;
+    padding: 60px 20px;
+    margin: 50px auto;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.tituloExito {
+    color: #28a745; /* Verde para éxito */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.tituloFallo {
+    color: #dc3545; /* Rojo para fallo */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.tituloPendiente {
+    color: #ffc107; /* Amarillo para pendiente */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.mensaje {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.botonAccion {
+    display: inline-block;
+    background-color: #007bff; /* Azul vibrante */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.botonAccion:hover {
+    background-color: #0056b3;
+}
+
+.infoAdicional {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Estilos específicos para el widget de Mercado Pago en Carrito.jsx */
+.mercadopagoWidget {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    /* Ajusta el ancho si el botón se ve muy grande */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

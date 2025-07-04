@@ -1,3 +1,5 @@
+// src/paginas/Login/Login.jsx
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import estilos from './Login.module.css';
@@ -30,7 +32,17 @@ const Login = () => {
 
       if (response.ok) {
         // Llama a la función login del AuthContext para guardar la sesión
-        login(data.token, data.id, data.email, data.firstName, data.lastName, data.roles);
+        // ¡¡¡ASEGÚRATE DE PASAR data.profilePictureUrl y data.bio AQUÍ!!!
+        login(
+            data.token,
+            data.id,
+            data.email,
+            data.firstName,
+            data.lastName,
+            data.roles,
+            data.profilePictureUrl, // <-- ¡CORRECCIÓN CLAVE AQUÍ!
+            data.bio                  // <-- ¡CORRECCIÓN CLAVE AQUÍ!
+        );
 
         alert('¡Inicio de sesión exitoso!');
         navigate('/dashboard'); // Redirige a la página principal o dashboard

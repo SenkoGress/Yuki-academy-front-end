@@ -1,0 +1,145 @@
+/* src/paginas/CuentaUsuario/PaymentHistoryPage.module.css */
+
+.contenedorHistorialPagos {
+    padding: 40px 24px;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.contenedorHistorialPagos h1 {
+    color: var(--primary);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-family: var(--font-titulos);
+}
+
+.mensajeCarga, .mensajeError, .mensajeVacio {
+    padding: 20px;
+    font-size: 1.1rem;
+    color: #555;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.mensajeError {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.mensajeVacio {
+    background-color: #e2e3e5;
+    color: #495057;
+    border: 1px solid #d6d8db;
+}
+
+.tablaHistorial {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.tablaHistorial th, .tablaHistorial td {
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.tablaHistorial th {
+    background-color: var(--primary-light); /* Color de fondo para encabezados */
+    color: var(--primary-high);
+    font-weight: bold;
+}
+
+.tablaHistorial tbody tr:nth-child(even) {
+    background-color: #f8f8f8; /* Cebra para filas */
+}
+
+.tablaHistorial tbody tr:hover {
+    background-color: #f0f0f0; /* Resaltar al pasar el ratón */
+}
+
+.estado {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.estado.approved {
+    background-color: #28a745; /* Verde */
+}
+
+.estado.pending {
+    background-color: #ffc107; /* Amarillo */
+    color: #333;
+}
+
+.estado.rejected, .estado.failed {
+    background-color: #dc3545; /* Rojo */
+}
+
+.botonVolver {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botonVolver:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contenedorHistorialPagos {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .contenedorHistorialPagos h1 {
+        font-size: 1.8rem;
+    }
+    .tablaHistorial, .tablaHistorial thead, .tablaHistorial tbody, .tablaHistorial th, .tablaHistorial td, .tablaHistorial tr {
+        display: block; /* Hace que la tabla se apile en pantallas pequeñas */
+    }
+    .tablaHistorial thead tr {
+        position: absolute;
+        top: -9999px; /* Oculta los encabezados de la tabla */
+        left: -9999px;
+    }
+    .tablaHistorial tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .tablaHistorial td {
+        border: none; /* Elimina bordes individuales */
+        position: relative;
+        padding-left: 50%; /* Espacio para la etiqueta */
+        text-align: right;
+    }
+    .tablaHistorial td::before {
+        content: attr(data-label); /* Usa el atributo data-label para mostrar el encabezado */
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
+    }
+    /* Añade data-label a tus <td> en el JSX para que funcione el responsive table */
+    /* Ejemplo: <td data-label="ID Orden">{payment.orderId}</td> */
+}

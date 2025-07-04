@@ -35,6 +35,12 @@ const MenuUsuario = () => {
                     </Link>
                 </li>
                 <li>
+                    <Link to="/cuenta" className={estilos.enlaceOpcion}>
+                        <FiUser />
+                        <span>Cuenta</span>
+                    </Link>
+                </li>
+                <li>
                     <button onClick={handleLogout} className={estilos.enlaceOpcion}>
                         <FiLogOut />
                         <span>Cerrar Sesión</span>

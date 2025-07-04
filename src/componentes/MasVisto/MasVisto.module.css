@@ -1,7 +1,9 @@
+/* src/componentes/MasVisto/MasVisto.module.css */
+
 .seccionMasVisto {
   width: 100%;
-  padding: 48px 0; 
-  background-color: #f7f9fa; 
+  padding: 48px 0;
+  background-color: #f7f9fa;
   font-family: sans-serif;
 }
 
@@ -16,12 +18,30 @@
 }
 
 .carouselContainer {
-  padding: 0 16px; 
+  padding: 0 16px;
   max-width: 1340px;
   margin: 0 auto;
 }
 
-
 .carouselItem {
   padding: 0 8px;
+}
+
+/* --- NUEVOS ESTILOS PARA MENSAJES DE ESTADO (Carga, Error, Sin cursos) --- */
+.mensajeEstado {
+  text-align: center;
+  font-size: 1.2em;
+  color: #555;
+  padding: 50px 24px; /* Añadimos padding horizontal también */
+  max-width: 1340px;
+  margin: 0 auto; /* Centrar el mensaje */
+}
+
+.mensajeEstadoError {
+  text-align: center;
+  font-size: 1.2em;
+  color: #dc3545; /* Color rojo para errores */
+  padding: 50px 24px;
+  max-width: 1340px;
+  margin: 0 auto;
 }

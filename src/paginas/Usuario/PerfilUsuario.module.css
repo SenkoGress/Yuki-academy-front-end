@@ -1,4 +1,5 @@
-/* src/paginas/PerfilUsuario/PerfilUsuario.module.css */
+/* src/paginas/Usuario/PerfilUsuario.module.css */
+
 .contenedorPerfil {
     padding: 40px 24px;
     max-width: 800px;
@@ -11,48 +12,125 @@
 
 .contenedorPerfil h1 {
     color: var(--primary);
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 30px;
     font-family: var(--font-titulos);
 }
 
-.datosPerfil {
-    text-align: left;
-    font-size: 1.1rem;
-    line-height: 1.8;
+.contenedorCarga {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #555;
 }
 
-.datosPerfil strong {
+.infoPerfil {
+    display: flex;
+    flex-direction: column; /* Por defecto apilados */
+    align-items: center;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .infoPerfil {
+        flex-direction: row; /* En pantallas más grandes, lado a lado */
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+.seccionImagen {
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+}
+
+.imagenPerfil {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Circular */
+    object-fit: cover; /* Asegura que la imagen no se distorsione */
+    border: 4px solid var(--primary-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.seccionDetalles {
+    text-align: left;
+    flex-grow: 1; /* Permite que los detalles ocupen el espacio restante */
+}
+
+.seccionDetalles p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
     color: #333;
 }
 
+.seccionDetalles strong {
+    color: var(--primary);
+    margin-right: 8px;
+}
+
 .botonEditar {
-    background-color: var(--primary);
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background-color: var(--accent); /* Un color de acento o primary */
     color: white;
-    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 6px;
+    text-decoration: none;
     font-size: 1rem;
-    margin-top: 30px;
+    font-weight: bold;
     transition: background-color 0.3s ease;
 }
 
 .botonEditar:hover {
-    background-color: var(--primary-high);
+    background-color: var(--accent-dark); /* Color más oscuro al pasar el ratón */
 }
 
-/* Estilos para el mensaje de acceso denegado */
+.botonVolver {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #6c757d; /* Gris para el botón de volver */
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botonVolver:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contenedorPerfil {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .contenedorPerfil h1 {
+        font-size: 1.8rem;
+    }
+    .seccionDetalles p {
+        font-size: 1rem;
+    }
+    .botonEditar, .botonVolver {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Estilos para el mensaje de acceso denegado (si se usa aquí) */
 .contenedorMensaje {
     padding: 40px 24px;
     max-width: 600px;
     margin: 40px auto;
-    background-color: #ffe0b2; /* Un color suave para el aviso */
+    background-color: #ffe0b2;
     border: 1px solid #ffcc80;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     text-align: center;
-    color: #e65100; /* Texto naranja */
+    color: #e65100;
 }
 
 .contenedorMensaje h2 {
@@ -67,7 +145,7 @@
 }
 
 .contenedorMensaje .botonLogin {
-    background-color: #ff9800; /* Naranja brillante */
+    background-color: #ff9800;
     color: white;
     padding: 10px 20px;
     border: none;

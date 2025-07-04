@@ -1,63 +1,149 @@
+/* src/paginas/ConvertirseEnInstructor/ConvertirseEnInstructorPage.module.css */
+
+/*
+  Asegúrate de que estas variables CSS estén definidas en un archivo global
+  (ej. src/index.css, src/App.css o un archivo de variables dedicado)
+  o descomenta y define aquí si no están disponibles globalmente.
+*/
+:root {
+  --font-titulos: 'Arial', sans-serif; /* Ejemplo, usa tu fuente de títulos */
+  --white: #ffffff;
+  --primary: #6a1b9a; /* Tu morado principal */
+  --primary-high: #4a148c; /* Morado más oscuro para hover */
+  --text-color: #333;
+  --text-light-color: #6a6f73;
+  --border-color: #d1d7dc;
+  --error-color: #D32F2F; /* Rojo para errores */
+  --error-bg-color: #FFCDD2; /* Fondo rojo claro para errores */
+  --error-border-color: #EF9A9A; /* Borde rojo para errores */
+}
+
+
 .paginaContenedor {
+  /* Usando el nombre del estilo que tenías: .paginaContenedor */
   padding: 50px 24px;
   display: flex;
   justify-content: center;
-  background-color: #f7f9fa;
-  min-height: 80vh;
+  background-color: #f7f9fa; /* Fondo general de la página */
+  min-height: calc(100vh - 120px); /* Ajusta a la altura real de tu header y footer */
+  align-items: center; /* Centra verticalmente la caja de términos */
 }
 
 .cajaTerminos {
-  background-color: white;
+  /* Usando el nombre del estilo que tenías: .cajaTerminos */
+  background-color: var(--white);
   padding: 40px;
-  border: 1px solid #d1d7dc;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   max-width: 800px;
   width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para la caja */
+  box-sizing: border-box; /* Incluir padding y borde en el ancho/alto */
 }
 
 .titulo {
+  /* Usando el nombre del estilo que tenías: .titulo */
   font-family: var(--font-titulos);
   font-size: 2.2rem;
   margin-bottom: 8px;
+  color: var(--primary-high); /* Asegurando color de título */
+  text-align: center; /* Centra el título */
 }
 
 .subtitulo {
+  /* Usando el nombre del estilo que tenías: .subtitulo */
   font-size: 1.1rem;
-  color: #6a6f73;
+  color: var(--text-light-color);
   margin-bottom: 32px;
+  text-align: center; /* Centra el subtítulo */
+}
+
+.seccionTerminos {
+  /* Este es un nuevo contenedor para agrupar h2 y areaTerminos, mejor para consistencia */
+  background-color: var(--light-bg-color, #f8f0fc); /* Fondo claro para la sección de términos */
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 30px; /* Espacio antes del checkbox/botón */
+  text-align: left; /* Contenido interno alineado a la izquierda */
+}
+
+.seccionTerminos h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  text-align: center; /* Centra el título de la sección */
 }
 
 .textoTerminos {
-  border: 1px solid #d1d7dc;
+  /* Usando el nombre del estilo que tenías: .textoTerminos */
+  border: 1px solid var(--border-color);
   padding: 24px;
   height: 250px;
   overflow-y: scroll;
   margin-bottom: 24px;
-  background-color: #f7f9fa;
+  background-color: #f7f9fa; /* Fondo ligeramente diferente para el área de texto */
+  border-radius: 4px;
+  line-height: 1.6;
+  color: var(--text-color);
+  font-size: 0.95em;
 }
 
 .textoTerminos h4 {
+  /* Usando el nombre del estilo que tenías: .textoTerminos h4 */
   font-family: var(--font-titulos);
   margin: 16px 0 8px 0;
+  color: var(--primary); /* Color para subtítulos de términos */
 }
 
 .textoTerminos p {
+  /* Usando el nombre del estilo que tenías: .textoTerminos p */
   line-height: 1.6;
 }
 
 .areaConfirmacion {
+  /* Usando el nombre del estilo que tenías: .areaConfirmacion */
   margin-bottom: 24px;
+  text-align: left;
+  display: flex; /* Para flexbox del checkbox */
+  justify-content: center; /* Centra el checkbox dentro de su área */
 }
 
 .areaConfirmacion label {
+  /* Usando el nombre del estilo que tenías: .areaConfirmacion label */
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: bold;
+  color: var(--text-color);
+  cursor: pointer;
 }
 
-.botonAceptar {
-  width: 100%;
+.areaConfirmacion input[type="checkbox"] {
+  /* Estilo base del checkbox */
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary); /* Cambia el color del checkmark si el navegador lo soporta */
+  cursor: pointer;
+}
+
+
+/* Estilo para el mensaje de error */
+.mensajeError {
+  color: var(--error-color); /* Rojo definido en variables */
+  background-color: var(--error-bg-color); /* Fondo rojo claro */
+  border: 1px solid var(--error-border-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+
+.botonAceptar, .botonVolver { /* Aplicamos estilos comunes a ambos botones */
+  width: 100%; /* Ocupa todo el ancho */
   padding: 16px;
   font-size: 1.1rem;
   font-weight: bold;
@@ -67,6 +153,10 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: block; /* Para que cada botón ocupe su propia línea */
+  margin-bottom: 10px; /* Espacio entre botones */
+  text-decoration: none; /* Para Link como botón */
+  box-sizing: border-box; /* Incluir padding y borde en el ancho/alto */
 }
 
 .botonAceptar:hover {
@@ -74,7 +164,45 @@
 }
 
 .botonAceptar:disabled {
-  background-color: #d1d7dc;
+  background-color: var(--border-color); /* Color gris claro */
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+.botonVolver {
+  background-color: var(--text-light-color); /* Un gris más oscuro para el botón de volver */
+  margin-top: 20px; /* Espacio extra para separarlo del botón de aceptar */
+}
+
+.botonVolver:hover {
+  background-color: #555; /* Un gris aún más oscuro al pasar el ratón */
+}
+
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+  .cajaTerminos {
+    padding: 25px;
+  }
+  .titulo {
+    font-size: 1.8em;
+  }
+  .subtitulo {
+    font-size: 1em;
+  }
+  .textoTerminos {
+    height: 200px;
+    padding: 15px;
+  }
+  .botonAceptar, .botonVolver {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+  .areaConfirmacion {
+    flex-direction: column;
+    align-items: flex-start; /* Alinea a la izquierda en pantallas pequeñas */
+  }
+  .areaConfirmacion label {
+    text-align: left;
+  }
 }

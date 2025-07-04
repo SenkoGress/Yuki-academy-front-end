@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // --- CONTEXTOS ---
 import { CarritoProvider } from './context/CarritoContext.jsx';
@@ -22,27 +24,31 @@ import TerminosInstructor from './paginas/TerminosInstructor/TerminosInstructor.
 import PanelProfesor from './paginas/PanelProfesor.jsx';
 import MisCursosComprados from './paginas/MisCursosComprados/MisCursosComprados.jsx';
 import PerfilUsuario from './paginas/Usuario/PerfilUsuario.jsx';
-import CuentaUsuario from './paginas/Usuario/CuentaUsuario.jsx';
-import UsuarioLogeado from './paginas/UsuarioLogeado/UsuarioLogeado.jsx';
-import CrearCursoPagina from './paginas/CrearCursoPagina/CrearCursoPagina.jsx'; // 1. IMPORTACIÓN AÑADIDA
+import CuentaUsuario from './paginas/Usuario/CuentaUsuario.jsx'; // Tu componente principal de cuenta
+// import UsuarioLogeado from './paginas/UsuarioLogeado/UsuarioLogeado.jsx'; // Eliminado o reubicado si es un dashboard diferente
+import CrearCursoPagina from './paginas/CrearCursoPagina/CrearCursoPagina.jsx';
 
+// --- PÁGINAS DE ESTADO DE PAGO ---
+import PaymentSuccess from './paginas/PaymentSuccess.jsx';
+import PaymentFailure from './paginas/PaymentFailure.jsx';
+import PaymentPending from './paginas/PaymentPending.jsx';
+
+// --- PÁGINAS DE GESTIÓN DE CUENTA DE USUARIO ---
+// Asegúrate de que las rutas relativas sean correctas para tu estructura de carpetas
+import ChangePasswordPage from './paginas/CuentaUsuario/ChangePasswordPage.jsx';
+import EditProfilePage from './paginas/CuentaUsuario/EditProfilePage.jsx';
+import PaymentHistoryPage from './paginas/CuentaUsuario/PaymentHistoryPage.jsx';
+import PrivacySettingsPage from './paginas/CuentaUsuario/PrivacySettingsPage.jsx';
 
 // --- CSS ---
 import './App.css';
 
-// Componente interno para organizar el layout
 const AppLayout = () => {
-    // Obtenemos el estado de autenticación desde el contexto
-    const { isLoggedIn, _user } = useAuth();
-    
+    const { isLoggedIn } = useAuth();
+
     return (
         <div className="layout-container">
-            {/* LÓGICA CONDICIONAL PARA EL ENCABEZADO */}
-            {isLoggedIn ? (
-                <EncabezadoLogeado />
-            ) : (
-                <Encabezado />
-            )}
+            {isLoggedIn ? <EncabezadoLogeado /> : <Encabezado />}
 
             <main>
                 <Routes>
@@ -53,15 +59,22 @@ const AppLayout = () => {
                     <Route path="/carrito" element={<Carrito />} />
                     <Route path="/convertirse-en-instructor" element={<TerminosInstructor />} />
                     <Route path="/panel-profesor" element={<PanelProfesor />} />
-                    
-                    {/* 2. RUTA AÑADIDA PARA CREAR CURSOS */}
                     <Route path="/panel-profesor/crear-curso" element={<CrearCursoPagina />} />
-
                     <Route path="/mis-cursos-comprados" element={<MisCursosComprados />} />
                     <Route path="/perfil" element={<PerfilUsuario />} />
-                    <Route path="/cuenta" element={<CuentaUsuario />} />
-                    <Route path="/mi-cuenta" element={<UsuarioLogeado />} />
-                    <Route path="/dashboard" element={<PaginaDeInicio />} />
+                    <Route path="/dashboard" element={<PaginaDeInicio />} /> {/* Si dashboard es PaginaDeInicio */}
+
+                    {/* --- RUTAS ESPECÍFICAS DE MERCADO PAGO --- */}
+                    <Route path="/payment/success" element={<PaymentSuccess />} />
+                    <Route path="/payment/failure" element={<PaymentFailure />} />
+                    <Route path="/payment/pending" element={<PaymentPending />} />
+
+                    {/* --- RUTAS DE GESTIÓN DE CUENTA DE USUARIO (¡TODAS BAJO /cuenta!) --- */}
+                    <Route path="/cuenta" element={<CuentaUsuario />} /> {/* Página principal de la cuenta */}
+                    <Route path="/cuenta/cambiar-contrasena" element={<ChangePasswordPage />} />
+                    <Route path="/cuenta/editar-perfil" element={<EditProfilePage />} />
+                    <Route path="/cuenta/historial-pagos" element={<PaymentHistoryPage />} />
+                    <Route path="/cuenta/ajustes-privacidad" element={<PrivacySettingsPage />} />
                 </Routes>
             </main>
 
@@ -70,8 +83,6 @@ const AppLayout = () => {
     );
 };
 
-
-// El componente principal App ahora solo se encarga de los Providers
 function App() {
     return (
         <Router>
@@ -80,6 +91,18 @@ function App() {
                     <AppLayout />
                 </CarritoProvider>
             </AuthProvider>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </Router>
     );
 }

@@ -1,135 +1,114 @@
-/* Estilos para EncabezadoLogeado.module.css */
+/* src/componentes/EncabezadoLogeado/EncabezadoLogeado.module.css */
 
 .encabezado {
-  display: flex;
-  align-items: center;
-  padding: 10px 24px;
-  background-color: white;
-  border-bottom: 1px solid #d1d7dc;
-  font-family: var(--font-textos);
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    background-color: white;
+    border-bottom: 1px solid #d1d7dc;
+    font-family: var(--font-textos);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra sutil */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .grupoIzquierdo {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
 }
 
 .logoImagen {
-  height: 34px;
-  width: auto;
-  display: block;
+    height: 34px;
+    width: auto;
+    display: block;
 }
 
+/* Estilos para el formulario de búsqueda */
 .formulario {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  max-width: 700px;
-  margin: 0 24px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Permite que el formulario ocupe el espacio */
+    max-width: 700px; /* Ancho máximo para el formulario */
+    margin: 0 24px; /* Margen a los lados */
 }
 
 .contenedorInput {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .icono {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #6a6f73;
-  font-size: 1.1rem;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6a6f73;
+    font-size: 1.1rem;
 }
 
 .entrada {
-  width: 100%;
-  padding: 12px 16px 12px 48px;
-  border: 1px solid var(--black);
-  border-radius: 999px;
-  background-color: #f7f9fa;
-  font-size: 14px;
+    width: 100%;
+    padding: 12px 16px 12px 48px; /* Ajuste el padding izquierdo para el icono */
+    border: 1px solid #d1d7dc; /* Borde más suave */
+    border-radius: 999px; /* Borde redondeado completo */
+    background-color: #f7f9fa; /* Fondo claro */
+    font-size: 14px;
+    color: var(--black); /* Color de texto del input */
+    outline: none; /* Eliminar el contorno al enfocar */
 }
 
+.entrada::placeholder {
+    color: #6a6f73; /* Color del placeholder */
+}
+
+
 .grupoDerecho {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-shrink: 0;
-  margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    margin-left: auto; /* Empuja este grupo a la derecha */
 }
 
 .enlaceNavegacion {
-  text-decoration: none;
-  color: var(--black);
-  font-size: 14px;
-  white-space: nowrap;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 14px;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    transition: color 0.2s ease;
 }
 
 .enlaceNavegacion:hover {
-  color: var(--primary);
+    color: var(--primary); /* Usa tu variable --primary */
 }
 
-/* Estilos clave para los iconos, incluyendo el de las 3 barras */
+/* Estilos clave para los iconos (sidebar y carrito) */
 .botonIcono, .botonIconoCarrito {
-  background: none;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-  display: flex; /* Importante para que se muestre */
-  align-items: center;
-  justify-content: center;
-  color: var(--black);
-  font-size: 1.5rem; /* Le da tamaño al icono */
-  position: relative;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black);
+    font-size: 1.5rem; /* Tamaño de los iconos */
+    position: relative; /* Para el contador del carrito */
+    transition: color 0.2s ease;
 }
 
-.contenedorPerfil {
-  position: relative;
+.botonIcono:hover, .botonIconoCarrito:hover {
+    color: var(--primary); /* Color al pasar el ratón */
 }
-
-.botonPerfil {
-  background-color: var(--primary);
-  color: var(--white);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contadorCarrito {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: var(--tertiary);
-  color: var(--white);
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: bold;
-  transform: translate(40%, -40%);
-  border: 2px solid var(--white);
-}
-
-/* ... (todos los estilos que ya tenías) ... */
 
 .contadorCarrito {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: var(--tertiary);
+    background-color: var(--tertiary); /* Color de acento para el contador */
     color: var(--white);
     border-radius: 50%;
     width: 20px;
@@ -139,24 +118,34 @@
     justify-content: center;
     font-size: 0.75rem;
     font-weight: bold;
-    transform: translate(40%, -40%);
-    border: 2px solid var(--white);
+    transform: translate(40%, -40%); /* Ajuste de posición */
+    border: 2px solid var(--white); /* Borde blanco para resaltar */
 }
 
-/* --- ESTILOS AÑADIDOS PARA EL NUEVO BOTÓN ---  lolein*/ 
-.botonCuenta {
-    padding: 8px 16px;
-    text-decoration: none;
-    color: var(--black);
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-    white-space: nowrap;
-    background-color: var(--neutral-100);
-    border: 1px solid #d1d7dc;
+/* Media Queries para responsividad (ajusta los puntos de quiebre según tu diseño) */
+@media (max-width: 768px) {
+    .encabezado {
+        padding: 10px 15px;
+    }
+
+    .formulario {
+        display: none; /* Oculta la barra de búsqueda en pantallas pequeñas */
+    }
+
+    .grupoDerecho {
+        gap: 10px; /* Reduce el espacio entre elementos */
+    }
+
+    .enlaceNavegacion {
+        display: none; /* Oculta el enlace "Volver a YukiDT" en móvil si no es prioritario */
+    }
 }
 
-.botonCuenta:hover {
-    background-color: #e8e9eb;
+@media (max-width: 480px) {
+    .logoImagen {
+        height: 30px;
+    }
+    .botonIcono, .botonIconoCarrito {
+        font-size: 1.3rem;
+    }
 }

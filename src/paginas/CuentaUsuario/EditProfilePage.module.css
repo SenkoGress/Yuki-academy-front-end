@@ -1,0 +1,126 @@
+/* src/paginas/CuentaUsuario/EditProfilePage.module.css */
+
+.contenedorEditarPerfil {
+    padding: 40px 24px;
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.contenedorEditarPerfil h1 {
+    color: var(--primary);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    font-family: var(--font-titulos);
+}
+
+.contenedorCarga {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.grupoFormulario {
+    text-align: left;
+}
+
+.grupoFormulario label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.grupoFormulario input[type="text"],
+.grupoFormulario input[type="url"],
+.grupoFormulario textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.grupoFormulario textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.grupoFormulario small {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+    font-size: 0.85rem;
+}
+
+.mensajeError {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.botonEnviar {
+    padding: 12px 25px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.botonEnviar:hover:not(:disabled) {
+    background-color: var(--primary-high);
+}
+
+.botonEnviar:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.botonVolver {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botonVolver:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contenedorEditarPerfil {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .contenedorEditarPerfil h1 {
+        font-size: 1.8rem;
+    }
+    .botonEnviar, .botonVolver {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

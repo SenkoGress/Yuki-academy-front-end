@@ -1,21 +1,50 @@
+/* src/componentes/Sidebar/Sidebar.module.css */
+
+/* Variables de color (ejemplo, puedes ajustarlas a las de tu proyecto) */
+:root {
+  --primary-color: #6a1b9a; /* Morado principal de Yuki */
+  --primary-dark-color: #4a148c; /* Morado más oscuro */
+  --secondary-color: #d81b60; /* Un color de acento, si lo tienes */
+  --text-color: #333;
+  --text-light-color: #777;
+  --white-color: #ffffff;
+  --light-bg-color: #f8f0fc; /* Fondo claro para secciones */
+  --border-color: #eee;
+  --hover-bg-color: #f0f0f0;
+
+  /* Variables para el botón de cerrar sesión */
+  --logout-red: #dc3545; /* Rojo base para el botón */
+  --logout-red-dark: #c82333; /* Rojo más oscuro para el hover */
+  --logout-text-color: #ffffff; /* Color de texto blanco */
+  --logout-bg-hover: #fae0e3; /* Fondo muy claro al pasar el ratón */
+}
+
 .backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
   display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .sidebar {
-  width: 300px;
+  width: 280px;
+  max-width: 80%;
   height: 100%;
-  background-color: var(--white);
-  padding: 24px;
+  background-color: var(--white-color);
+  padding: 20px;
   transform: translateX(-100%);
-  animation: slide-in 0.3s forwards;
+  animation: slide-in 0.3s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes slide-in {
@@ -27,33 +56,182 @@
   }
 }
 
+.sidebarHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  position: relative;
+}
+
 .botonCerrar {
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
+  color: var(--text-light-color);
+  transition: color 0.2s ease;
+  padding: 5px;
   position: absolute;
-  top: 16px;
-  right: 16px;
-  color: var(--black);
+  top: 0px;
+  right: 0px;
 }
 
-.sidebar ul {
+.botonCerrar:hover {
+  color: var(--primary-dark-color);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin-bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
+  flex-wrap: wrap;
+}
+
+.userAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 3px solid var(--primary-color);
+  flex-shrink: 0;
+}
+
+.userText {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.userName {
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.2em;
+}
+
+.userEmail {
+  font-size: 0.9em;
+  color: var(--text-light-color);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menuLista {
   list-style: none;
   padding: 0;
-  margin-top: 64px;
+  margin: 0;
+  flex-grow: 1; /* Permite que la lista de menú ocupe el espacio restante */
+  display: flex; /* Habilita flexbox para la lista */
+  flex-direction: column; /* Organiza los ítems en columna */
 }
 
-.sidebar li a {
-  display: block;
-  padding: 16px 0;
+.menuLista li {
+  margin-bottom: 8px;
+}
+
+.enlaceMenu {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
   text-decoration: none;
-  color: var(--black);
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-bottom: 1px solid var(--neutral-100);
+  color: var(--text-color);
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.sidebar li a:hover {
-  color: var(--primary);
+.enlaceMenu:hover {
+  background-color: var(--hover-bg-color);
+  color: var(--primary-color);
+}
+
+.enlaceIcono {
+  margin-right: 12px;
+  color: var(--text-light-color);
+  transition: color 0.2s ease;
+}
+
+.enlaceMenu:hover .enlaceIcono {
+  color: var(--primary-color);
+}
+
+/* POSICIONAMIENTO DEL BOTÓN DE CERRAR SESIÓN AL FINAL */
+.logoutItem {
+  margin-top: auto; /* Empuja este ítem al final del contenedor flex */
+  padding-top: 15px; /* Separación de la línea superior */
+}
+
+/* ESTILOS DEL BOTÓN DE CERRAR SESIÓN PERMANENTEMENTE ROJO Y LETRAS BLANCAS */
+.botonCerrarSesionSidebar {
+  background-color: var(--logout-red); /* Fondo rojo permanente */
+  color: var(--logout-text-color); /* Letras blancas permanentes */
+  font-weight: bold;
+  border-radius: 6px; /* Asegura que el botón tenga bordes redondeados */
+  text-align: center; /* Centra el texto y el icono si no son flex */
+  justify-content: center; /* Si es flex, centra el contenido */
+  /* Asegura que el padding cubra la línea */
+  padding: 12px 15px; /* Restablece padding si .enlaceMenu lo cambió */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  /* Remueve el border-top que causaba el problema de la línea parcial */
+  border-top: none;
+}
+
+.botonCerrarSesionSidebar:hover {
+  background-color: var(--logout-red-dark); /* Rojo más oscuro al pasar el ratón */
+  color: var(--logout-text-color); /* Las letras siguen siendo blancas */
+}
+
+.botonCerrarSesionSidebar .enlaceIcono {
+  color: var(--logout-text-color); /* El icono es blanco */
+  transition: color 0.2s ease;
+}
+
+.botonCerrarSesionSidebar:hover .enlaceIcono {
+  color: var(--logout-text-color); /* El icono sigue siendo blanco */
+}
+
+/* Asegura que el último li de la lista general no tenga un margen inferior si no es el botón de logout */
+.menuLista li:not(.logoutItem) {
+  margin-bottom: 8px;
+}
+.menuLista li.logoutItem {
+  margin-bottom: 0; /* Elimina margen inferior para el botón de logout */
+}
+
+/* Media Queries (Mantenerlos, no necesitan cambios para esto) */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+  }
+  .userAvatar {
+    width: 45px;
+    height: 45px;
+  }
+  .userName {
+    font-size: 1.1em;
+  }
+  .userEmail {
+    font-size: 0.8em;
+  }
+  .enlaceMenu {
+    padding: 10px 12px;
+    font-size: 1em;
+  }
+  .enlaceIcono {
+    margin-right: 10px;
+  }
 }

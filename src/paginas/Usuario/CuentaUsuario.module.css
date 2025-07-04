@@ -7,6 +7,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: center;
+    position: relative; /* Para el modal */
 }
 
 .contenedorCuenta h1 {
@@ -29,6 +30,8 @@
     border-radius: 8px;
     border: 1px solid #e0e2e5;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex; /* Para organizar los botones */
+    flex-direction: column; /* Botones en columna */
 }
 
 .seccion h3 {
@@ -43,6 +46,7 @@
     color: #555;
     margin-bottom: 20px;
     line-height: 1.5;
+    flex-grow: 1; /* Para que el texto ocupe el espacio y los botones se alineen abajo */
 }
 
 .botonGestion {
@@ -60,7 +64,7 @@
     transition: background-color 0.3s ease;
 }
 
-.botonGestion:hover {
+.botonGestion:hover:not(:disabled) { /* Agregado :not(:disabled) */
     background-color: var(--primary-high);
 }
 
@@ -72,9 +76,15 @@
     background-color: #dc3545; /* Color rojo para acciones peligrosas */
 }
 
-.botonPeligro:hover {
+.botonPeligro:hover:not(:disabled) { /* Agregado :not(:disabled) */
     background-color: #c82333;
 }
+
+.botonGestion:disabled { /* Estilos para botones deshabilitados */
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
 
 /* Estilos para el mensaje de acceso denegado */
 .contenedorMensaje {
@@ -113,4 +123,76 @@
 
 .contenedorMensaje .botonLogin:hover {
     background-color: #fb8c00;
+}
+
+
+/* --- Estilos para los mensajes de carga y error --- */
+.loadingMessage {
+    color: var(--primary);
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.errorMessage {
+    color: #dc3545; /* Rojo de error */
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* --- Estilos para el Modal de Confirmación --- */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+}
+
+.modalContent {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    animation: fadeIn 0.3s ease-out; /* Animación de aparición */
+}
+
+.modalContent h2 {
+    color: var(--primary-high);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.modalContent p {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.modalActions {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espacio entre los botones del modal */
+}
+
+.modalActions .botonGestion {
+    width: auto; /* Ancho automático para que no ocupen todo el 100% */
+    padding: 10px 20px;
+    margin: 0; /* Elimina el margen inferior por defecto */
+}
+
+/* Animación simple de fadeIn */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

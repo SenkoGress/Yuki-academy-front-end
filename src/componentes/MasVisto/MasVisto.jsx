@@ -1,51 +1,14 @@
-import React from 'react';
-import Carousel from 'react-multi-carousel'; 
+// src/componentes/MasVisto/MasVisto.jsx
+
+import React, { useState, useEffect } from 'react'; // Importamos useState y useEffect
+import axios from 'axios'; // Importamos axios para hacer peticiones HTTP
+import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import estilos from './MasVisto.module.css';
+import estilos from './MasVisto.module.css'; // Estilos específicos de MasVisto
 import CursoCard from '../CursoCard/CursoCard.jsx';
 
-const cursosMasVistos = [
-  {
-    id: 10, 
-    titulo: 'Seguridad Informática Práctica',
-    instructor: 'ESET Academy',
-    rating: '⭐4.7',
-    precio: '18.990 CLPs',
-    imagen: 'https://web-assets.esetstatic.com/tn/-x700/wls/2018/04/cursos-online-gratuitos-seguridad-inform%C3%A1tica.jpg'
-  },
-  {
-    id: 11,
-    titulo: 'Desarrollo Web Full Stack Moderno',
-    instructor: 'Juan Pablo De la torre',
-    rating: '⭐4.9',
-    precio: '24.990 CLPs',
-    imagen: 'https://d3puay5pkxu9s4.cloudfront.net/courses/12523/img/web/800_imagen.jpg'
-  },
-  {
-    id: 12,
-    titulo: 'Introducción a la Computación',
-    instructor: 'Aprender21',
-    rating: '⭐4.5',
-    precio: 'Gratis',
-    imagen: 'https://www.aprender21.com.ve/images/colaboradores/cursos-de-computacion1.jpeg'
-  },
-  {
-    id: 13,
-    titulo: 'Curso de Informática Básica',
-    instructor: 'Headsem',
-    rating: '⭐4.6',
-    precio: 'Gratis',
-    imagen: 'https://www.headsem.com/wp-content/uploads/2018/06/Cursos-de-informatica.jpg'
-  },
-  {
-    id: 14,
-    titulo: 'Big Data: Análisis y Procesamiento',
-    instructor: 'Data Corp',
-    rating: '⭐4.9',
-    precio: '35.000 CLPs',
-    imagen: 'https://www.headsem.com/wp-content/uploads/2018/06/Big-Data.png'
-  },
-];
+// URL de tu endpoint de backend para obtener todos los cursos
+const API_BASE_URL = 'http://localhost:8081/api/courses';
 
 const responsive = {
   desktop: {
@@ -63,20 +26,78 @@ const responsive = {
 };
 
 const MasVisto = () => {
+  const [cursos, setCursos] = useState([]); // Estado para almacenar los cursos obtenidos de la API
+  const [loading, setLoading] = useState(true); // Estado para indicar si los datos están cargando
+  const [error, setError] = useState(null);   // Estado para almacenar errores de la petición
+
+  // useEffect para cargar los cursos cuando el componente se monta
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        setLoading(true); // Inicia el estado de carga
+        setError(null);    // Limpia cualquier error anterior
+        const response = await axios.get(API_BASE_URL); // Realiza la llamada GET a tu backend
+        // console.log("Cursos obtenidos para 'MasVisto':", response.data); // Para depuración
+
+        // Tomamos una porción de los cursos si hay muchos, o los ordenamos para simular "más vistos"
+        // Por ahora, simplemente tomaremos los primeros 5-6 cursos.
+        const fetchedCourses = response.data.slice(0, 6); // Limita a 6 cursos para el carrusel
+        setCursos(fetchedCourses); // Almacena los cursos en el estado
+        setLoading(false);     // Finaliza el estado de carga
+      } catch (err) {
+        console.error("Error al obtener los cursos para 'MasVisto':", err);
+        setError("No se pudieron cargar los cursos más vistos. Inténtalo de nuevo más tarde."); // Mensaje de error para el usuario
+        setLoading(false); // Finaliza el estado de carga incluso si hay error
+      }
+    };
+
+    fetchCourses(); // Llama a la función para obtener los cursos
+  }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar el componente
+
+  // Mostrar mensaje de carga mientras los datos se están obteniendo
+  if (loading) {
+    return (
+        <section className={estilos.seccionMasVisto}>
+          <p className={estilos.mensajeEstado}>Cargando cursos más vistos...</p>
+        </section>
+    );
+  }
+
+  // Mostrar mensaje de error si la petición falló
+  if (error) {
+    return (
+        <section className={estilos.seccionMasVisto}>
+          <p className={estilos.mensajeEstadoError}>{error}</p>
+        </section>
+    );
+  }
+
+  // Si no hay cursos después de cargar, mostrar un mensaje
+  if (cursos.length === 0) {
+    return (
+        <section className={estilos.seccionMasVisto}>
+          <p className={estilos.mensajeEstado}>No hay cursos disponibles para la sección "Más vistos" en este momento.</p>
+        </section>
+    );
+  }
+
   return (
-    <section className={estilos.seccionMasVisto}>
-      <h2 className={estilos.titulo}>Los Cursos mas vistos</h2>
-      <Carousel 
-        responsive={responsive}
-        infinite={true}
-        containerClass={estilos.carouselContainer}
-        itemClass={estilos.carouselItem}
-      >
-        {cursosMasVistos.map(curso => (
-          <CursoCard key={curso.id} curso={curso} mostrarBotonCarrito={false} />
-        ))}
-      </Carousel>
-    </section>
+      <section className={estilos.seccionMasVisto}>
+        <h2 className={estilos.titulo}>Los Cursos más vistos</h2>
+        <Carousel
+            responsive={responsive}
+            infinite={true}
+            containerClass={estilos.carouselContainer}
+            itemClass={estilos.carouselItem}
+        >
+          {cursos.map(curso => (
+              // Pasamos el objeto 'curso' tal cual lo recibimos del backend.
+              // CursoCard ya está preparado para manejar 'title', 'imageUrl', 'price', etc.
+              // El instructor se mostrará como 'Professor ID: X' si no hay un objeto profesor mapeado en el CourseDto.
+              <CursoCard key={curso.id} curso={curso} mostrarBotonCarrito={false} />
+          ))}
+        </Carousel>
+      </section>
   );
 };
 

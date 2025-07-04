@@ -10,7 +10,15 @@
   --neutral-600: #4A4A4A;
   --white: #FFFFFF;
   --black: #000000;
-  
+
+  /* --- NUEVAS VARIABLES AÑADIDAS/CORREGIDAS --- */
+  /* Derivado de --primary */
+  --primary-light: #9B7FD9; /* Un tono más claro de --primary */
+  /* Usando --tertiary como base para --accent */
+  --accent: var(--tertiary); /* Puedes usar un color existente como acento principal */
+  --accent-dark: #cc007a; /* Un tono más oscuro basado en --tertiary */
+  /* --- FIN NUEVAS VARIABLES --- */
+
   /* Tipografías */
   --font-titulos: 'IBM Plex Mono', monospace;
   --font-textos: 'Roboto Flex', sans-serif;
