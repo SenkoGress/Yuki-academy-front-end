@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { FiSearch, FiGlobe, FiMenu, FiUser, FiLogOut } from 'react-icons/fi';
+import { FiSearch, FiGlobe, FiMenu, FiUser, FiLogOut, FiX } from 'react-icons/fi'; // ¡FiX importado!
 import estilos from './Encabezado.module.css';
 import imagenCarrito from '../../assets/carrito.png';
 import logoYuki from '../../assets/yuki.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCarrito } from '../../context/CarritoContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
 
-const Encabezado = ({ alRealizarBusqueda }) => {
+const Encabezado = () => {
     const { items } = useCarrito();
-    const [termino, setTermino] = useState('');
+    const [termino, setTermino] = useState(''); // Estado para el input de búsqueda
     const [mostrarMenuPerfil, setMostrarMenuPerfil] = useState(false);
     const [mostrarMenuHamburguesa, setMostrarMenuHamburguesa] = useState(false);
     const { isLoggedIn, user, logout } = useAuth();
+    const navigate = useNavigate();
 
     const manejarEnvio = (e) => {
         e.preventDefault();
-        if (alRealizarBusqueda) {
-            alRealizarBusqueda(termino);
+        if (termino.trim()) {
+            navigate(`/cursos?q=${encodeURIComponent(termino.trim())}`);
+            setTermino(''); // Limpiar el input después de la búsqueda
         }
     };
 
@@ -29,6 +31,11 @@ const Encabezado = ({ alRealizarBusqueda }) => {
     const getNombreCorto = (user) => {
         if (!user || !user.firstName) return 'Perfil';
         return user.firstName.split(' ')[0];
+    };
+
+    // Función para limpiar el campo de búsqueda
+    const limpiarBusqueda = () => {
+        setTermino('');
     };
 
     return (
@@ -51,7 +58,7 @@ const Encabezado = ({ alRealizarBusqueda }) => {
                 <Link to="/">
                     <img src={String(logoYuki)} alt="Logo de Yuki" className={estilos.logoImagen} />
                 </Link>
-                <Link to="/#explorar" className={estilos.enlaceNavegacion}>Explorar</Link>
+                <Link to="/cursos" className={estilos.enlaceNavegacion}>Explorar Cursos</Link>
             </div>
 
             <form className={estilos.formulario} onSubmit={manejarEnvio}>
@@ -65,20 +72,29 @@ const Encabezado = ({ alRealizarBusqueda }) => {
                         onChange={(e) => setTermino(e.target.value)}
                         aria-label="Buscar"
                     />
+                    {/* Botón "X" para limpiar la búsqueda, visible solo si hay texto */}
+                    {termino && (
+                        <button
+                            type="button" // Importante: para que no envíe el formulario
+                            className={estilos.botonBorrarBusqueda}
+                            onClick={limpiarBusqueda}
+                            aria-label="Borrar búsqueda"
+                        >
+                            <FiX />
+                        </button>
+                    )}
                 </div>
             </form>
 
             <div className={estilos.grupoDerecho}>
-                {/* --- CAMBIO REALIZADO AQUÍ --- */}
-                <a 
-                  href="https://yukidt.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className={estilos.enlaceNavegacion}
+                <a
+                    href="https://yukidt.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={estilos.enlaceNavegacion}
                 >
-                  Volver a YukiDT
+                    Volver a YukiDT
                 </a>
-                {/* --------------------------------- */}
 
                 <Link to="/carrito" className={estilos.botonIconoCarrito}>
                     {items.length > 0 && (

@@ -1,55 +1,106 @@
-.card {
-  border: 1px solid #d1d7dc;
-  background-color: white;
-  max-width: 280px;
-  cursor: pointer;
-  text-align: left;
+
+:root {
+  --primary: #6a1b9a; 
+  --primary-high: #4a148c; 
+  --white: #ffffff;
+  --text-color: #1c1d1f; 
+  --text-light-color: #6a6f73; 
+  --borde-color: #d1d7dc; 
+  --fondo-suave: #f7f9fa; 
+  --rating-color: #b4690e; 
 }
-.card:hover .titulo {
-  color: #5624d0;
-}
-.imagenCurso {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #d1d7dc;
-}
-.info {
-  padding: 12px;
-}
-.titulo {
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0 0 4px 0;
-  color: #1c1d1f;
-  transition: color 0.2s ease;
-}
-.instructor {
-  font-size: 0.8rem;
-  color: #6a6f73;
-  margin: 0 0 8px 0;
-}
-.rating {
-  margin-bottom: 8px;
-}
-.puntuacion {
-  font-weight: bold;
-  color: #b4690e;
-  margin-right: 4px;
-}
-.precio {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #1c1d1f;
-  margin: 0;
-}
+
 .enlaceCard {
   text-decoration: none;
 }
 
-/* Añade esto al final de CursoCard.module.css */
+.card {
+  border: 1px solid var(--borde-color);
+  background-color: var(--white);
+  max-width: 280px;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 8px; 
+  overflow: hidden; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex; 
+  flex-direction: column; 
+  height: 100%; 
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.card:hover .titulo {
+  color: var(--primary-high); 
+}
+
+.imagenContenedor {
+  width: 100%;
+  height: 150px; 
+  overflow: hidden;
+  background-color: var(--fondo-suave); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagenCurso {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+}
+.info {
+  padding: 12px;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+}
+.titulo {
+  font-size: 1.1rem; 
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+  min-height: 2.6em; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+.instructor {
+  font-size: 0.85rem;
+  color: var(--text-light-color);
+  margin: 0 0 8px 0;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--rating-color);
+  font-size: 0.9em;
+}
+.iconoEstrella {
+  margin-right: 5px;
+}
+.puntuacion {
+  font-weight: bold;
+  color: var(--rating-color);
+  margin-right: 4px;
+}
+.precio {
+  font-size: 1.1rem; 
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 0;
+}
+
 .botonAgregar {
   width: 100%;
-  margin-top: 8px;
+  margin-top: 12px; 
   padding: 10px;
   background-color: var(--primary);
   color: var(--white);
@@ -58,6 +109,7 @@
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.2s ease;
+  align-self: flex-end; 
 }
 
 .botonAgregar:hover {

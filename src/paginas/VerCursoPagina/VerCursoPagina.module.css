@@ -1,0 +1,144 @@
+.paginaCurso {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.sidebar {
+    width: 320px;
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.enlaceVolver {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #555;
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+.enlaceVolver:hover {
+    background-color: #f7f7f7;
+}
+
+.tituloSidebar {
+    padding: 16px;
+    margin: 0;
+    font-size: 1.2rem;
+    background-color: #fafafa;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.navegacionCurso {
+    flex-grow: 1;
+}
+
+.seccion h4 {
+    padding: 12px 16px;
+    margin: 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #666;
+    background-color: #f7f9fa;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.seccion ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.leccionItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.leccionItem:hover {
+    background-color: #eef2ff;
+}
+
+.leccionItem.activo {
+    background-color: var(--primary);
+    color: white;
+}
+
+.iconoCompletado {
+    margin-left: auto;
+    color: #d0d0d0;
+}
+
+.leccionItem.activo .iconoCompletado {
+    color: #a3e635; /* Verde lima cuando está activo */
+}
+
+/* Contenido Principal */
+.contenidoPrincipal {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cabeceraContenido {
+    padding: 16px 24px;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+.cabeceraContenido h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.areaContenido {
+    flex-grow: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.reproductorVideo {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    background-color: black;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.reproductorVideo iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contenidoArticulo {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    line-height: 1.7;
+}
+
+.contenidoVacio, .contenedorCarga, .contenedorError {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    color: #555;
+}

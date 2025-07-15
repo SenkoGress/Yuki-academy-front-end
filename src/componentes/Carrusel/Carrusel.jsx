@@ -4,10 +4,11 @@ import { Carousel } from 'react-responsive-carousel';
 import estilos from './Carrusel.module.css';
 
 
-import imagenSkin1 from '../../assets/skin.jpg';
-import imagenSkin2 from '../../assets/skin1.jpg';
+import imagenSkin1 from '../../assets/carrusel1.jpg';
+import imagenSkin2 from '../../assets/carrusel2.jpg';
 
-
+// carrusel1.jpg
+// carrusel2.jpg
 const Carrusel = () => {
   return (
 

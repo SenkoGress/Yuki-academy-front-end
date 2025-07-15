@@ -9,7 +9,7 @@ const TarjetaMiCurso = ({ curso }) => {
         <h4 className={estilos.titulo}>{curso.titulo}</h4>
         <p className={estilos.estadisticas}>{curso.estudiantes} Estudiantes • {curso.estado}</p>
         <div className={estilos.acciones}>
-          <button className={estilos.botonEditar}>Editar Curso</button>
+          <button className={estilos.botonEditar}>Ver Curso</button>
         </div>
       </div>
     </div>

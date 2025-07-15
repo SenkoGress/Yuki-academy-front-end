@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import estilos from './Login.module.css';
 import logoYuki from '../../assets/yuki.png';
-import { useAuth } from '../../context/AuthContext.jsx'; // Importa useAuth
+import { useAuth } from '../../context/AuthContext.jsx';
+import { toast } from 'react-toastify'; // ¡Importa la función toast!
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth(); // Obtén la función login del contexto
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,8 +32,6 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Llama a la función login del AuthContext para guardar la sesión
-        // ¡¡¡ASEGÚRATE DE PASAR data.profilePictureUrl y data.bio AQUÍ!!!
         login(
             data.token,
             data.id,
@@ -40,11 +39,12 @@ const Login = () => {
             data.firstName,
             data.lastName,
             data.roles,
-            data.profilePictureUrl, // <-- ¡CORRECCIÓN CLAVE AQUÍ!
-            data.bio                  // <-- ¡CORRECCIÓN CLAVE AQUÍ!
+            data.profilePictureUrl,
+            data.bio
         );
 
-        alert('¡Inicio de sesión exitoso!');
+        // ¡¡¡CAMBIO AQUÍ!!! Reemplazar alert por toast.success
+        toast.success('¡Inicio de sesión exitoso!'); // <-- ¡CORREGIDO A TOAST!
         navigate('/dashboard'); // Redirige a la página principal o dashboard
       } else {
         let errorMessage = 'Error al iniciar sesión. Verifica tus credenciales.';
@@ -55,11 +55,13 @@ const Login = () => {
         } else if (Object.keys(data).length > 0) {
           errorMessage = Object.values(data).join('. ');
         }
-        setError(errorMessage);
+        setError(errorMessage); // Para el error en pantalla
+        toast.error(errorMessage); // <-- También añadir toast para el error si quieres
         console.error('Error del backend:', data);
       }
     } catch (err) {
       setError('No se pudo conectar con el servidor. Inténtalo de nuevo más tarde.');
+      toast.error('No se pudo conectar con el servidor. Inténtalo de nuevo más tarde.'); // <-- Toast para error de red
       console.error('Error de red o del servidor:', err);
     } finally {
       setLoading(false);
@@ -73,6 +75,7 @@ const Login = () => {
           <h2>Iniciar sesión para continuar</h2>
 
           <form onSubmit={handleSubmit}>
+            {/* El mensaje de error en pantalla */}
             {error && <p className={estilos.errorMessage}>{error}</p>}
             <div className={estilos.campo}>
               <label htmlFor="email">Email</label>

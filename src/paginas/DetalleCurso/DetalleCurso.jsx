@@ -1,91 +1,126 @@
-// src/paginas/DetalleCurso/DetalleCurso.jsx
-
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { todosLosCursos } from '../../data/cursos.js';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom'; // Se eliminó 'useNavigate'
+import axios from 'axios';
 import { useCarrito } from '../../context/CarritoContext.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
 import estilos from './DetalleCurso.module.css';
 import { FiCheckCircle, FiPlayCircle } from 'react-icons/fi';
-import { toast } from 'react-toastify'; // Importar la función toast
+import { toast } from 'react-toastify';
+
+const API_BASE_URL = 'http://localhost:8081/api';
 
 const DetalleCurso = () => {
   const { agregarAlCarrito } = useCarrito();
-  const { isLoggedIn } = useAuth(); // Se eliminó 'user' ya que no se usa en este componente
+  const { isLoggedIn, user, loading: authLoading } = useAuth();
   const { cursoId } = useParams();
-  const curso = todosLosCursos.find(c => c.id === parseInt(cursoId));
 
-  // --- LÓGICA DE VERIFICACIÓN (simulada) ---
-  // En una aplicación real, esta lista vendría de tu back-end (ej. desde el perfil del usuario).
-  const cursosCompradosPorUsuario = [1, 4]; // Ejemplo: el usuario compró los cursos con ID 1 y 4
+  const [curso, setCurso] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [cursosCompradosPorUsuario, setCursosCompradosPorUsuario] = useState([]);
 
-  // Verificamos si el curso actual ya fue comprado por el usuario logeado
-  const yaComprado = isLoggedIn && cursosCompradosPorUsuario.includes(parseInt(cursoId));
-  // --- FIN DE LA LÓGICA ---
+  useEffect(() => {
+    // Se define la función asíncrona dentro y se llama inmediatamente
+    const fetchCursoDetalle = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`${API_BASE_URL}/courses/${cursoId}`);
+        setCurso(response.data);
+      } catch (err) {
+        setError('Error al cargar el curso.');
+        console.error('Error al cargar los detalles del curso:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!curso) {
-    return <div><h2>Curso no encontrado</h2></div>;
+    fetchCursoDetalle();
+  }, [cursoId]); // 'navigate' eliminado de las dependencias
+
+  useEffect(() => {
+    // Se define la función asíncrona dentro y se llama inmediatamente
+    const fetchPurchasedCourses = async () => {
+      if (authLoading || !isLoggedIn) return;
+      try {
+        const response = await axios.get(`${API_BASE_URL}/users/${user.id}/purchased-courses`, {
+          headers: { 'Authorization': `Bearer ${user.token}` }
+        });
+        setCursosCompradosPorUsuario(response.data.map(c => c.id));
+      } catch (err) {
+        console.error('Error al cargar cursos comprados:', err);
+      }
+    };
+
+    if (isLoggedIn) {
+      fetchPurchasedCourses();
+    }
+  }, [isLoggedIn, user, authLoading]);
+
+  if (loading) {
+    return <div className={estilos.pagina}><p>Cargando...</p></div>;
   }
+  if (error) {
+    return <div className={estilos.pagina}><p>{error}</p></div>;
+  }
+  if (!curso) {
+    return <div className={estilos.pagina}><p>Curso no encontrado.</p></div>;
+  }
+
+  const esProfesorDelCurso = isLoggedIn && user && curso.professorId === user.id;
+  const yaComprado = cursosCompradosPorUsuario.includes(parseInt(cursoId));
+  const tieneAccesoAlContenido = esProfesorDelCurso || yaComprado;
 
   const handleAgregarClick = () => {
     agregarAlCarrito(curso);
-    // --- ¡MENSAJE SIN COMILLAS SIMPLES ALREDEDOR DEL TÍTULO! ---
-    toast.success(`${curso.titulo} añadido a la cesta!`, { // <-- Modificado aquí
-      position: "top-right",
-      autoClose: 3000, // La notificación desaparecerá en 3 segundos
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+    toast.success(`${curso.title} añadido a la cesta!`);
   };
 
   return (
       <div className={estilos.pagina}>
         <header className={estilos.hero}>
-          <h1>{curso.titulo}</h1>
-          <p className={estilos.descripcion}>{curso.descripcionLarga}</p>
-          <p>Creado por: {curso.instructor} | Puntuación: {curso.rating}</p>
+          <h1>{curso.title}</h1>
+          <p className={estilos.descripcion}>{curso.description}</p>
+          <p>Creado por: {curso.professorFirstName} {curso.professorLastName} | Nivel: {curso.level} | Categoría: {curso.category}</p>
         </header>
 
         <main className={estilos.contenidoPrincipal}>
           <div className={estilos.columnaIzquierda}>
             <div className={estilos.cajaTemario}>
               <h2>Temario del curso</h2>
-              <ul>
-                {curso.temario.map((item, index) => (
-                    <li key={index}>
-                      <FiCheckCircle className={estilos.iconoCheck} /> {item}
-                    </li>
-                ))}
-              </ul>
+              {curso.summarySyllabus && curso.summarySyllabus.trim() !== '' ? (
+                  <div className={estilos.temarioResumenTexto}>
+                    {curso.summarySyllabus.split('\n').filter(line => line.trim() !== '').map((line, index) => (
+                        <p key={index}><FiCheckCircle className={estilos.iconoCheck} /> {line}</p>
+                    ))}
+                  </div>
+              ) : (
+                  <p>El temario de este curso aún no está disponible.</p>
+              )}
             </div>
           </div>
           <div className={estilos.columnaDerecha}>
             <div className={estilos.cajaCompra}>
-              <img src={curso.imagen} alt={`Imagen de ${curso.titulo}`} className={estilos.imagenCurso} />
-
-              {/* --- RENDERIZADO CONDICIONAL --- */}
-              {/* Si ya está comprado, muestra el botón para ir al curso */}
-              {yaComprado ? (
-                  <div className={estilos.yaCompradoContenedor}>
-                    <p>Ya tienes acceso a este curso.</p>
-                    <Link to={`/ver-curso/${curso.id}`} className={estilos.botonIrCurso}>
-                      <FiPlayCircle />
-                      <span>Empezar a aprender</span>
-                    </Link>
-                  </div>
+              <img src={curso.imageUrl} alt={`Imagen de ${curso.title}`} className={estilos.imagenCurso} />
+              {curso.isPublished ? (
+                  tieneAccesoAlContenido ? (
+                      <div className={estilos.yaCompradoContenedor}>
+                        <p>{esProfesorDelCurso ? "Eres el profesor de este curso." : "Ya tienes acceso a este curso."}</p>
+                        <Link to={`/ver-curso/${curso.id}`} className={estilos.botonIrCurso}>
+                          <FiPlayCircle />
+                          <span>Empezar a aprender</span>
+                        </Link>
+                      </div>
+                  ) : (
+                      <>
+                        <h3 className={estilos.precio}>CLP {curso.price}</h3>
+                        <button onClick={handleAgregarClick} className={estilos.botonComprar}>Añadir a la cesta</button>
+                      </>
+                  )
               ) : (
-                  // Si no, muestra el precio y el botón para añadir a la cesta
-                  <>
-                    <h3 className={estilos.precio}>{curso.precio}</h3>
-                    <button onClick={handleAgregarClick} className={estilos.botonComprar}>Añadir a la cesta</button>
-                    <p className={estilos.garantia}>Garantía de reembolso de 30 días</p>
-                  </>
+                  <p className={estilos.cursoNoPublicado}>
+                    {esProfesorDelCurso ? "Tu curso no está publicado." : "Este curso no está disponible para compra aún."}
+                  </p>
               )}
-              {/* --- FIN DEL RENDERIZADO CONDICIONAL --- */}
             </div>
           </div>
         </main>

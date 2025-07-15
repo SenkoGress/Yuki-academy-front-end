@@ -1,0 +1,482 @@
+.paginaContenedor {
+    background-color: #f7f9fa;
+    min-height: calc(100vh - 65px);
+    padding: 32px;
+}
+
+.cabeceraPagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1340px;
+    margin: 0 auto 32px auto;
+}
+
+.cabeceraPagina h1 {
+    font-family: var(--font-titulos);
+    font-size: 2rem;
+    margin: 4px 0 0 0;
+}
+
+.navegacion {
+    font-size: 0.9rem;
+    color: var(--neutral-600);
+}
+
+.navegacion a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.botonVolver {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--neutral-100);
+    border: 1px solid #d1d7dc;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--black);
+}
+
+.layoutPrincipal {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 32px;
+    max-width: 1340px;
+    margin: 0 auto;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar button, .sidebar .linkActivo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--neutral-600);
+}
+
+.sidebar .linkActivo {
+    background-color: var(--primary);
+    color: white;
+}
+
+.sidebar button:not(.linkActivo):hover {
+    background-color: #e8e9eb;
+}
+
+.contenido {
+    background-color: white;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Estilos para el Formulario de Edición */
+.form { display: flex; flex-direction: column; }
+.campo { margin-bottom: 24px; }
+.campo label { display: block; font-weight: bold; margin-bottom: 8px; }
+.campo input, .campo textarea, .campo select { /* Asegurarse de que select también tiene estos estilos */
+    width: 100%; padding: 12px; font-size: 1rem; border: 1px solid #d1d7dc; border-radius: 4px;
+}
+.formActions { margin-top: 16px; text-align: right; }
+.botonGuardar { background-color: var(--primary); color: white; padding: 12px 24px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+
+/* Estilos para la Tabla de Alumnos */
+.tablaAlumnos { width: 100%; border-collapse: collapse; }
+.tablaAlumnos th, .tablaAlumnos td { padding: 12px; border-bottom: 1px solid #e8e9eb; text-align: left; }
+.tablaAlumnos th { background-color: #f7f9fa; }
+
+/* --- ESTILOS PARA EL EDITOR DE PROGRAMA CURRICULAR --- */
+.curriculumContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoTexto {
+    margin-bottom: 24px;
+    color: var(--neutral-600);
+}
+
+.listaCurriculum {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.seccionContenedor {
+    background-color: #f7f9fa;
+    border: 1px solid #e0e2e5;
+    border-radius: 4px;
+}
+
+.seccionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 1.1rem;
+}
+
+.seccionHeader span, .seccionHeader input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-grow: 1;
+    margin-right: 16px;
+}
+
+.seccionHeader strong {
+    font-family: var(--font-titulos);
+}
+
+.seccionAcciones {
+    display: flex;
+    gap: 8px;
+}
+
+.botonIcono {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--neutral-600);
+    padding: 4px;
+}
+.botonIcono:hover {
+    color: var(--primary);
+}
+
+.listaClases {
+    padding: 16px;
+    border-top: 1px solid #e0e2e5;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.claseItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #d1d7dc;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+.claseItem > span, .claseItem > input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-grow: 1;
+    margin-right: 16px;
+}
+
+.claseAcciones {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconoExpandir {
+    color: var(--neutral-600);
+    transition: transform 0.3s ease;
+}
+
+.iconoRotado {
+    transform: rotate(180deg);
+}
+
+.botonContenido {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    font-weight: bold;
+    background-color: white;
+    color: var(--black);
+    border: 2px solid var(--black);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.botonAñadir, .botonAñadirSeccion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-weight: bold;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+.botonAñadirSeccion {
+    background-color: var(--primary);
+    color: white;
+}
+
+.editorContenido {
+    background-color: #fdfdff;
+    border: 1px solid #d1d7dc;
+    border-top: none;
+    padding: 24px;
+    border-radius: 0 0 4px 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.editorContenido p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.uploadContainer {
+    border: 2px dashed #d1d7dc;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    color: #6a6f73;
+    cursor: pointer;
+}
+
+.uploadContainer:hover {
+    border-color: var(--primary);
+}
+
+.inputEdicion {
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    padding: 4px 8px;
+    flex-grow: 1;
+}
+
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.modalConfirmacion {
+    text-align: center;
+}
+
+.modalHeader {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e8e9eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalHeader h3 {
+    margin: 0;
+    font-family: var(--font-titulos);
+    display: flex;
+    align-items: center;
+}
+
+.modalBody {
+    padding: 24px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.modalFooter {
+    padding: 16px 24px;
+    border-top: 1px solid #e8e9eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.botonCancelar {
+    background-color: transparent;
+    border: 1px solid #d1d7dc;
+    color: var(--black);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botonEliminarConfirmar {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.curriculumFooter {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e0e2e5;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.botonGuardarPrograma {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.botonGuardarPrograma:hover {
+    background-color: var(--primary-high);
+}
+
+.selectorTipoContenido {
+    padding: 16px;
+    text-align: center;
+}
+
+.selectorTipoContenido p {
+    margin: 0 0 16px 0;
+    color: var(--neutral-600);
+}
+
+.botonesTipo {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.botonTipoContenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 120px;
+    height: 100px;
+    border: 2px solid #d1d7dc;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+    color: var(--black);
+}
+
+.botonTipoContenido:hover {
+    border-color: var(--primary);
+    background-color: #f8f0fc;
+    color: var(--primary);
+}
+
+.editorArticulo {
+    padding: 16px 0 0 0;
+}
+
+.editorArticulo textarea {
+    width: 100%;
+    min-height: 300px;
+    border: 1px solid #d1d7dc;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 1rem;
+    font-family: var(--font-textos);
+}
+
+.editorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.editorHeader h4 {
+    margin: 0;
+}
+
+.botonVolverSeleccion {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+}
+
+/* --- ESTILOS CORREGIDOS PARA EL BOTÓN DE PUBLICAR --- */
+.botonPublicar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+    margin-top: 16px;
+
+    /* Propiedades para que se vea como un botón sólido */
+    background-color: var(--primary);
+    color: white;
+    border: none; /* Se elimina el borde para un look sólido */
+    transition: background-color 0.2s ease;
+}
+
+.botonPublicar:hover {
+    background-color: var(--primary-high);
+}

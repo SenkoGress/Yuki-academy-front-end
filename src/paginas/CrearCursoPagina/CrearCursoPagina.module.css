@@ -45,21 +45,76 @@
 }
 
 .campo input,
-.campo textarea {
+.campo textarea,
+.campo select {
     padding: 12px;
     font-size: 1rem;
     border: 1px solid #d1d7dc;
     border-radius: 4px;
     font-family: var(--font-textos);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: white;
 }
 
 .campo input:focus,
-.campo textarea:focus {
+.campo textarea:focus,
+.campo select:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 2px rgba(103, 63, 151, 0.2);
 }
+
+/* --- ESTILOS PARA EL GRUPO DE RADIO BUTTONS --- */
+.grupoRadio {
+    display: flex;
+    gap: 24px;
+    border: 1px solid #d1d7dc;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.grupoRadio label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.grupoRadio input[type="radio"] {
+    /* Ocultamos el radio button por defecto */
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    width: 1.15em;
+    height: 1.15em;
+    border: 2px solid var(--neutral-600);
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+}
+
+.grupoRadio input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--primary);
+}
+
+.grupoRadio input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.grupoRadio input[type="radio"]:checked {
+    border-color: var(--primary);
+}
+
+/* -------------------------------------------------------- */
 
 .botonCrear {
     padding: 16px;

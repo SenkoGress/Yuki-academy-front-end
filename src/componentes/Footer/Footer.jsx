@@ -6,7 +6,7 @@ import logoYuki from '../../assets/yuki.png'; // ¡IMPORTACIÓN FALTANTE AÑADID
 const columnasDeLinks = [
     {
         titulo: 'Yuki',
-        links: ['Yuki Business', 'Enseña en Yuki', 'Consigue la aplicación', 'Sobre nosotros', 'Contacto']
+        links: ['Yuki Business', 'Enseña en Yuki', 'Consigue la aplicación', 'Sobre nosotros']
     },
     {
         titulo: 'Carreras',

@@ -4,32 +4,32 @@ import React from 'react';
 import estilos from './CursoCard.module.css';
 import { Link } from 'react-router-dom';
 import { useCarrito } from '../../context/CarritoContext.jsx';
-import { toast } from 'react-toastify'; // Importar la función toast
+import { toast } from 'react-toastify';
+import { FiStar } from 'react-icons/fi'; // Importa el icono de estrella
 
-// El componente CursoCard ahora acepta una nueva propiedad opcional: 'forceRedirectTo'.
-// Si esta propiedad se proporciona, la tarjeta redirigirá a esa URL específica,
-// ignorando la URL generada por el 'id' del curso.
+
 const CursoCard = ({ curso, mostrarBotonCarrito = true, forceRedirectTo = null }) => {
   const { agregarAlCarrito } = useCarrito();
 
-  // Define la URL de redirección por defecto: /cursos/{id_del_curso}
+
   const defaultUrlDelCurso = `/cursos/${curso.id}`;
 
-  // La URL final será 'forceRedirectTo' si se proporcionó, de lo contrario, la default.
-  // Esta es la lógica que permite que 'CursosDestacados' fuerce la redirección.
+
   const finalUrlDelCurso = forceRedirectTo || defaultUrlDelCurso;
 
-  // Manejador para el botón "Añadir al carrito"
+
+  const defaultCourseImage = 'https://via.placeholder.com/280x150?text=Imagen+del+Curso';
+
+
   const handleAgregarClick = (e) => {
-    e.preventDefault(); // Previene que el Link de la tarjeta se active al hacer clic en el botón
-    e.stopPropagation(); // Detiene la propagación del evento para que no active el Link
+    e.preventDefault(); 
+    e.stopPropagation(); 
 
-    agregarAlCarrito(curso); // Llama a la función del contexto para añadir el curso al carrito
+    agregarAlCarrito(curso); 
 
-    // --- ¡MENSAJE SIN COMILLAS SIMPLES ALREDEDOR DEL TÍTULO! ---
-    toast.success(`${curso.title} añadido a la cesta!`, { // <-- Modificado aquí
+    toast.success(`${curso.title} añadido a la cesta!`, {
       position: "top-right",
-      autoClose: 3000, // La notificación desaparecerá en 3 segundos
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -37,43 +37,39 @@ const CursoCard = ({ curso, mostrarBotonCarrito = true, forceRedirectTo = null }
       progress: undefined,
       theme: "light",
     });
-    // --- FIN NOTIFICACIÓN TOAST ---
   };
 
-  // Formatea el precio para mostrarlo en moneda chilena (CLP)
-  // Maneja casos donde el precio puede ser nulo, indefinido, 0 o el string "Gratis"
-  const formattedPrice = curso.price != null && !isNaN(parseFloat(curso.price))
+
+  const formattedPrice = curso.price != null
       ? parseFloat(curso.price).toLocaleString('es-CL', { style: 'currency', currency: 'CLP' })
-      : (curso.price === 0 || String(curso.price).toLowerCase() === 'gratis' ? 'Gratis' : 'Precio no disponible');
+      : 'Gratis'; 
 
-  // Muestra el nombre del profesor o un placeholder si no está disponible
-  // Asegúrate de que tu backend esté devolviendo el objeto 'professor' completo
-  // o al menos 'professor.firstName' y 'professor.lastName' dentro de CourseDto.
-  // Si solo devuelve professorId, esta parte necesita un ajuste.
-  const instructorName = curso.professor ? `${curso.professor.firstName} ${curso.professor.lastName}` : (curso.professorId ? `ID Profesor: ${curso.professorId}` : 'Instructor Desconocido');
 
-  // Muestra el rating o un placeholder si no está disponible
-  const displayRating = curso.rating || 'Sin calificar';
+  const instructorName = (curso.professorFirstName && curso.professorLastName)
+      ? `${curso.professorFirstName} ${curso.professorLastName}`
+      : (curso.professorId ? `ID Profesor: ${curso.professorId}` : 'Instructor Desconocido');
+
+  const displayRating = curso.rating || 'N/A'; 
+
 
   return (
-      // El componente Link ahora utiliza 'finalUrlDelCurso' para la redirección
       <Link to={finalUrlDelCurso} className={estilos.enlaceCard}>
         <div className={estilos.card}>
-          {/* Muestra la imagen del curso, con el título como texto alternativo */}
-          <img src={curso.imageUrl} alt={`Portada del curso ${curso.title}`} className={estilos.imagenCurso} />
+          <img
+              src={curso.imageUrl || defaultCourseImage}
+              alt={`Portada del curso ${curso.title || 'Cargando...'}`}
+              className={estilos.imagenCurso}
+              onError={(e) => { e.target.onerror = null; e.target.src = defaultCourseImage; }} 
+          />
           <div className={estilos.info}>
-            {/* Muestra el título del curso */}
-            <h3 className={estilos.titulo}>{curso.title}</h3>
-            {/* Muestra el nombre del instructor */}
+            <h3 className={estilos.titulo}>{curso.title || 'Título no disponible'}</h3>
             <p className={estilos.instructor}>{instructorName}</p>
             <div className={estilos.rating}>
-              {/* Muestra el rating */}
+              <FiStar className={estilos.iconoEstrella} />
               <span className={estilos.puntuacion}>{displayRating}</span>
             </div>
-            {/* Muestra el precio formateado */}
             <p className={estilos.precio}>{formattedPrice}</p>
 
-            {/* Renderizado condicional del botón "Añadir al carrito" */}
             {mostrarBotonCarrito && (
                 <button onClick={handleAgregarClick} className={estilos.botonAgregar}>
                   Añadir al carrito

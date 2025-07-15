@@ -1,5 +1,18 @@
 /* src/componentes/EncabezadoLogeado/EncabezadoLogeado.module.css */
 
+/* Variables de color (asegúrate de que existan en tu App.css o define aquí) */
+:root {
+    --primary: #6a1b9a;
+    --primary-high: #4a148c;
+    --black: #333;
+    --text-color: #333;
+    --text-light-color: #6a6f73;
+    --white: #ffffff;
+    --tertiary: #d81b60; /* Color para el contador del carrito/notificaciones */
+    --hover-bg-color: #f0f0f0; /* Fondo sutil para hover */
+    --font-textos: 'Arial', sans-serif;
+}
+
 .encabezado {
     display: flex;
     align-items: center;
@@ -7,7 +20,7 @@
     background-color: white;
     border-bottom: 1px solid #d1d7dc;
     font-family: var(--font-textos);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra sutil */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -26,67 +39,77 @@
     display: block;
 }
 
-/* Estilos para el formulario de búsqueda */
 .formulario {
     display: flex;
     align-items: center;
-    flex-grow: 1; /* Permite que el formulario ocupe el espacio */
-    max-width: 700px; /* Ancho máximo para el formulario */
-    margin: 0 24px; /* Margen a los lados */
+    flex-grow: 1; /* Permite que el formulario de búsqueda ocupe el espacio principal */
+    max-width: 700px;
+    margin: 0 24px; /* Mantén el margen lateral */
 }
 
 .contenedorInput {
-    position: relative;
+    display: flex;
+    align-items: center;
     width: 100%;
+    background-color: #f7f9fa;
+    border: 1px solid #d1d7dc;
+    border-radius: 999px;
+    padding: 0 16px;
+    box-sizing: border-box;
 }
 
 .icono {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
     color: #6a6f73;
     font-size: 1.1rem;
+    margin-right: 12px;
 }
 
 .entrada {
-    width: 100%;
-    padding: 12px 16px 12px 48px; /* Ajuste el padding izquierdo para el icono */
-    border: 1px solid #d1d7dc; /* Borde más suave */
-    border-radius: 999px; /* Borde redondeado completo */
-    background-color: #f7f9fa; /* Fondo claro */
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    outline: none;
     font-size: 14px;
-    color: var(--black); /* Color de texto del input */
-    outline: none; /* Eliminar el contorno al enfocar */
+    color: var(--black);
+    padding: 12px 0;
 }
 
 .entrada::placeholder {
-    color: #6a6f73; /* Color del placeholder */
+    color: #6a6f73;
 }
 
+/* --- ¡NUEVO GRUPO PARA EL LADO DERECHO DEL HEADER! --- */
+.grupoCentroDerecha {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Espacio entre "Explorar Cursos" y el grupoDerecho original */
+    flex-shrink: 0; /* No se encoge */
+    margin-left: 24px; /* Ajusta el margen a la izquierda del grupo para separarlo de la barra de búsqueda */
+}
 
-.grupoDerecho {
+.grupoDerecho { /* Este es tu grupoDerecho original, ahora anidado */
     display: flex;
     align-items: center;
     gap: 16px;
     flex-shrink: 0;
-    margin-left: auto; /* Empuja este grupo a la derecha */
+    /* margin-left: auto; REMOVED: Ya no es necesario aquí porque grupoCentroDerecha lo maneja */
 }
+/* --- FIN NUEVO GRUPO --- */
+
 
 .enlaceNavegacion {
     text-decoration: none;
     color: var(--black);
     font-size: 14px;
-    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    white-space: nowrap;
     transition: color 0.2s ease;
 }
 
 .enlaceNavegacion:hover {
-    color: var(--primary); /* Usa tu variable --primary */
+    color: var(--primary);
 }
 
-/* Estilos clave para los iconos (sidebar y carrito) */
-.botonIcono, .botonIconoCarrito {
+.botonIcono, .botonIconoCarrito, .botonIconoNotificaciones {
     background: none;
     border: none;
     padding: 8px;
@@ -95,20 +118,20 @@
     align-items: center;
     justify-content: center;
     color: var(--black);
-    font-size: 1.5rem; /* Tamaño de los iconos */
-    position: relative; /* Para el contador del carrito */
+    font-size: 1.5rem;
+    position: relative;
     transition: color 0.2s ease;
 }
 
-.botonIcono:hover, .botonIconoCarrito:hover {
-    color: var(--primary); /* Color al pasar el ratón */
+.botonIcono:hover, .botonIconoCarrito:hover, .botonIconoNotificaciones:hover {
+    color: var(--primary);
 }
 
-.contadorCarrito {
+.contadorCarrito, .contadorNotificaciones {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: var(--tertiary); /* Color de acento para el contador */
+    background-color: var(--tertiary);
     color: var(--white);
     border-radius: 50%;
     width: 20px;
@@ -118,26 +141,71 @@
     justify-content: center;
     font-size: 0.75rem;
     font-weight: bold;
-    transform: translate(40%, -40%); /* Ajuste de posición */
-    border: 2px solid var(--white); /* Borde blanco para resaltar */
+    transform: translate(40%, -40%);
+    border: 2px solid var(--white);
 }
 
-/* Media Queries para responsividad (ajusta los puntos de quiebre según tu diseño) */
+.botonBorrarBusqueda {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6a6f73;
+    font-size: 1.1rem;
+    margin-left: 8px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.botonBorrarBusqueda:hover {
+    color: var(--black);
+}
+
+/* Media Queries para responsividad */
 @media (max-width: 768px) {
     .encabezado {
         padding: 10px 15px;
+        flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+        justify-content: space-between; /* Ajustar el justify */
+    }
+
+    .grupoIzquierdo {
+        order: 1;
+        gap: 8px;
     }
 
     .formulario {
-        display: none; /* Oculta la barra de búsqueda en pantallas pequeñas */
+        order: 3; /* Coloca el formulario en una nueva línea debajo */
+        flex-basis: 100%; /* Ocupa todo el ancho disponible */
+        margin: 10px 0; /* Espacio superior e inferior para el formulario */
+        max-width: none; /* Eliminar el max-width en móviles si es necesario */
     }
 
-    .grupoDerecho {
-        gap: 10px; /* Reduce el espacio entre elementos */
+    .grupoCentroDerecha { /* Oculta todo este grupo en móviles */
+        display: none;
     }
 
-    .enlaceNavegacion {
-        display: none; /* Oculta el enlace "Volver a YukiDT" en móvil si no es prioritario */
+    /* Estos elementos serán manejados por el Sidebar en móviles si es necesario */
+    .grupoDerecho .enlaceNavegacion,
+    .grupoDerecho .botonIconoNotificaciones,
+    .grupoDerecho .botonIconoCarrito {
+        display: none; /* Oculta los elementos originales del grupoDerecho en móviles si es necesario */
+    }
+
+    /* Mostrar solo el botón de Sidebar/hamburguesa y logo */
+    .botonIcono { /* El botón de hamburguesa */
+        display: flex; /* Asegura que se muestre */
+        margin-right: 8px;
+    }
+
+    /* Muestra los iconos de carrito y notificación si quieres que sigan visibles en móviles, ajustando su posición */
+    .botonIconoNotificaciones, .botonIconoCarrito {
+        display: flex; /* Asegura que sean visibles */
+        /* Puede que necesites ajustar su posición si no están anidados en el grupoDerecho y éste está oculto */
+        /* Si quieres que se vean en móviles, saca estos enlaces del .grupoCentroDerecha y ponlos directamente en el .encabezado
+           o en un grupo que no se oculte en móviles. La configuración actual los ocultará. */
     }
 }
 
@@ -145,7 +213,12 @@
     .logoImagen {
         height: 30px;
     }
-    .botonIcono, .botonIconoCarrito {
+    .botonIcono, .botonIconoCarrito, .botonIconoNotificaciones {
         font-size: 1.3rem;
+    }
+    .contadorCarrito, .contadorNotificaciones {
+        width: 18px;
+        height: 18px;
+        font-size: 0.65rem;
     }
 }
